@@ -1,0 +1,67 @@
+﻿<hr />
+<div class="alert alert-info alert-dismissable">
+    <a class="panel-close close" data-dismiss="alert">×</a>
+    <i class="fa fa-user-plus fa-3x"></i> Create new customer. Make sure you fill all required fields.
+</div>
+<div class="row">
+    <form role="form" angular-validator name="addCustomerForm" angular-validator-submit="Create()">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="lab-important" for="name">Customer Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="newCustomer.Name" name="name" id="name" placeholder="Customer Name" validate-on="blur"
+                           required required-message="'Customer Name is required'">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <div class="form-group">
+                    <textarea ng-model="newCustomer.address" class="form-control" rows="3" id="address" name="address"
+                              placeholder="Address" validate-on="blur"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="landline">Landline</label>
+                <div class="form-group">
+                    <input type="text" ng-model="newCustomer.Landline" class="form-control" id="landline" name="landline"
+                           placeholder="Land line" validate-on="blur">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mobilePhone">Mobile phone</label>
+                <div class="form-group">
+                    <input type="text" ng-model="newCustomer.Mobile" class="form-control" id="mobilePhone" name="mobilePhone"
+                           placeholder="Mobile phone" validate-on="blur">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <div class="form-group">
+                    <input type="email" class="form-control" ng-model="newCustomer.Email" id="email" name="email"
+                           placeholder="Email address" validate-on="blur" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="additionalDetails">Additional Details</label>
+                <div class="form-group">
+                    <textarea ng-model="newCustomer.AdditionalDetails" class="form-control" rows="5" id="additionalDetails" name="additionalDetails"
+                           placeholder="Additional Details" validate-on="blur"></textarea>
+                </div>
+            </div>
+            <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+        </div>
+    </form>
+    <div class="col-sm-5 col-md-push-1">
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                <ul>
+                    <li ng-repeat="error in submission.errorMessages track by $index"> <strong>{{error}}</strong> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

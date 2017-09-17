@@ -1,0 +1,72 @@
+﻿<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Heat Chart Headers</h4>
+            <div class="input-group">
+                <input id="inputSearchHeatChartHeaders" type="search" ng-model="filterHeatChartHeaders" class="form-control shortInputSearch"
+                       placeholder="Filter, search heatChartHeaders..">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="search();"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-primary" ng-click="clearSearch();"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                    <button class="btn btn-primary" title="Add" ng-click="addNew();"><i class="fa fa-user-plus fa-fw"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6" ng-repeat="heatChart in HeatChartHeaders | filter:filterHeatChartHeaders">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{heatChart.HeatChartNumber}}</strong><br />
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-condensed shortMargin">
+                                    <tr> <td class="shortPadding">Customer Name:</td> <td class="shortPadding"><i>{{heatChart.CustomerSelected.Name}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Customer PO Number:</td> <td class="shortPadding"><i>{{heatChart.CustomerPONumber}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Customer PO Equipment:</td> <td class="shortPadding"><i>{{heatChart.CustomerPOEquipment}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Drawing Number:</td> <td class="shortPadding"><i>{{heatChart.DrawingNumber}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Drawing Revision:</td> <td class="shortPadding"><i>{{heatChart.DrawingRevision}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Tag Number:</td> <td class="shortPadding"><i>{{heatChart.TagNumber}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Third Party Inspection:</td> <td class="shortPadding"><i>{{heatChart.ThirdPartyInspectionSelected.Name}}</i></td> </tr>
+
+
+                                    <tr> <td class="shortPadding">Created By:</td> <td class="shortPadding"><i>{{heatChart.CreatedBy}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Modified By:</td> <td class="shortPadding"><i>{{heatChart.ModifiedBy}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Created On:</td> <td class="shortPadding"><i>{{heatChart.CreatedOn | date:'mediumDate'}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Modified On:</td> <td class="shortPadding"><i>{{heatChart.ModifiedOn | date:'mediumDate'}}</i></td> </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <div class="pull-right">
+                                <buton class="btn btn-primary btn-xs" ng-click="editHeatChartHeader(heatChart);">
+                                    Edit
+                                    <i class="fa fa-pencil pull-right"></i>
+                                </buton>
+                                <buton class="btn btn-primary btn-xs" ng-click="openDeleteDialog(heatChart);">
+                                    Delete
+                                    <i class="glyphicon glyphicon-remove-sign"></i>
+                                </buton>
+                                <buton class="btn btn-primary btn-xs" ng-click="GenerateHeatChart(heatChart);">
+                                    Generate Heat Chart                                   
+                                </buton>
+                                <buton class="btn btn-primary btn-xs" ng-click="DownloadAllReports(heatChart);">
+                                    Download All Reports
+                                    <i class="fa fa-download pull-right"></i>
+                                </buton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-center">
+                <ng-custom-pager page="{{page}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)">
+                </ng-custom-pager>
+            </div>
+        </div>
+    </div>
+</div>

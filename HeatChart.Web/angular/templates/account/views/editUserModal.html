@@ -1,0 +1,54 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Edit {{EditedUser.Username}}
+    </div>
+    <div class="panel-body">
+        <form role="form" angular-validator name="editUserForm" angular-validator-submit="updateUser()">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="lab-important" for="name">User Name</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" readonly ng-model="EditedUser.Username" name="name" id="name" placeholder="User Name" validate-on="blur"
+                                   required required-message="'Name is required'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="email">Email address</label>
+                        <div class="form-group">
+                            <input type="email" class="form-control" readonly ng-model="EditedUser.Email" id="email" name="email"
+                                   placeholder="Email address" validate-on="blur">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label for="inputPassword">New Password</label>
+                        <div class="form-group">
+                            <input type="{{inputType}}" id="inputPassword" name="inputPassword" class="form-control"
+                                   ng-model="EditedUser.password" placeholder="Password" validate-on="blur" required required-message="'Password is required'">
+                            <div class="row" style="margin-left:0%;">
+                                <input type="checkbox" id="checkbox" ng-model="passwordCheckbox" ng-click="hideShowPassword()" />
+                                <label for="checkbox" ng-if="passwordCheckbox">Hide characters</label>
+                                <label for="checkbox" ng-if="!passwordCheckbox">Show characters</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="updateUser()">Update</button>
+        </div>
+    </div>
+</div>

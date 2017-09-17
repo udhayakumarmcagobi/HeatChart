@@ -1,0 +1,68 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Edit {{EditedSupplier.Name}}
+    </div>
+    <div class="panel-body">
+        <form role="form" angular-validator name="editSupplierForm" angular-validator-submit="updateSupplier()">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="lab-important"  for="name">Supplier Name</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" readonly ng-model="EditedSupplier.Name" name="name" id="name" placeholder="Supplier Name" validate-on="blur"
+                                   required required-message="'Name is required'">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <div class="form-group">
+                    <textarea ng-model="EditedSupplier.Address" class="form-control" rows="3" id="address" name="address"
+                              placeholder="Address" validate-on="blur"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="landline">Landline</label>
+                        <div class="form-group">
+                            <input type="text" ng-model="EditedSupplier.Landline" class="form-control" id="landline" name="landline"
+                                   placeholder="Land line" validate-on="blur">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 selectContainer">
+                        <label for="mobilePhone">Mobile phone</label>
+                        <div class="form-group">
+                            <input type="text" ng-model="EditedSupplier.Mobile" class="form-control" id="mobilePhone" name="mobilePhone"
+                                   placeholder="Mobile phone" validate-on="blur">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label  for="email">Email address</label>
+                <div class="form-group">
+                    <input type="email" class="form-control" ng-model="EditedSupplier.Email" id="email" name="email"
+                           placeholder="Email address" validate-on="blur" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="additionalDetails">Additional Details</label>
+                <div class="form-group">
+                    <textarea ng-model="EditedSupplier.AdditionalDetails" class="form-control" rows="5" id="additionalDetails" name="additionalDetails"
+                              placeholder="Additional Details" validate-on="blur"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="updateSupplier()">Update</button>
+        </div>
+    </div>
+</div>

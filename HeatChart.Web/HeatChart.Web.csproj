@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4AA49D27-DBF2-46B2-B8B9-340959CCE70B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HeatChart.Web</RootNamespace>
+    <AssemblyName>HeatChart.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.0.1\lib\net45\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.0.1\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.Core.3.3.17\lib\net45\AWSSDK.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AWSSDK.S3, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
+      <HintPath>..\packages\AWSSDK.S3.3.3.9\lib\net45\AWSSDK.S3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.Runtime.12.0.2.2402\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.Runtime.12.0.2.2402\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.Runtime.12.0.2.2402\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="angular\app.js" />
+    <Content Include="angular\directives\ngDropdownMultiselect.directive.js" />
+    <Content Include="angular\directives\ngCustomSelect.directive.js" />
+    <Content Include="angular\directives\ngCustomPager.directive.js" />
+    <Content Include="angular\directives\topBar.directive.js" />
+    <Content Include="angular\directives\sideBar.directive.js" />
+    <Content Include="angular\layout\pager.html" />
+    <Content Include="angular\layout\sideBar.html" />
+    <Content Include="angular\layout\topBar.html" />
+    <Content Include="angular\rootCtrl.js" />
+    <Content Include="angular\services\heatChartReportService.js" />
+    <Content Include="angular\services\apiService.js" />
+    <Content Include="angular\services\membershipService.js" />
+    <Content Include="angular\services\notificationService.js" />
+    <Content Include="angular\templates\account\controllers\userChangePasswordCtrl.js" />
+    <Content Include="angular\templates\account\controllers\editUserCtrl.js" />
+    <Content Include="angular\templates\account\controllers\usersCtrl.js" />
+    <Content Include="angular\templates\account\controllers\loginCtrl.js" />
+    <Content Include="angular\templates\account\controllers\registerCtrl.js" />
+    <Content Include="angular\templates\account\views\deleteUserModal.html" />
+    <Content Include="angular\templates\account\views\userChangePassword.html" />
+    <Content Include="angular\templates\account\views\editUserModal.html" />
+    <Content Include="angular\templates\account\views\users.html" />
+    <Content Include="angular\templates\account\views\login.html" />
+    <Content Include="angular\templates\account\views\register.html" />
+    <Content Include="angular\templates\customers\controllers\editCustomerCtrl.js" />
+    <Content Include="angular\templates\customers\controllers\createCustomerCtrl.js" />
+    <Content Include="angular\templates\customers\controllers\customersCtrl.js" />
+    <Content Include="angular\templates\customers\views\createCustomer.html" />
+    <Content Include="angular\templates\customers\views\customers.html" />
+    <Content Include="angular\templates\customers\views\deleteCustomerModal.html" />
+    <Content Include="angular\templates\customers\views\editCustomerModal.html" />
+    <Content Include="angular\templates\heatcharts\controllers\createHeatChartHeaderCtrl.js" />
+    <Content Include="angular\templates\heatcharts\controllers\createHeatChartDetailsCtrl.js" />
+    <Content Include="angular\templates\heatcharts\controllers\downloadHeatChartReportCtrl.js" />
+    <Content Include="angular\templates\heatcharts\controllers\generateHeatChartHeaderCtrl.js" />
+    <Content Include="angular\templates\heatcharts\controllers\deleteHeatChartHeaderCtrl.js" />
+    <Content Include="angular\templates\heatcharts\controllers\editHeatChartHeaderCtrl.js" />
+    <Content Include="angular\templates\heatcharts\controllers\editHeatChartDetailsCtrl.js" />
+    <Content Include="angular\templates\heatcharts\controllers\heatChartHeadersCtrl.js" />
+    <Content Include="angular\templates\heatcharts\views\createHeatChartHeader.html" />
+    <Content Include="angular\templates\heatcharts\views\createHeatChartDetails.html" />
+    <Content Include="angular\templates\heatcharts\views\downloadHeatChartReportModal.html" />
+    <Content Include="angular\templates\heatcharts\views\generateHeatChartHeaderModal.html" />
+    <Content Include="angular\templates\heatcharts\views\deleteHeatChartHeaderModal.html" />
+    <Content Include="angular\templates\heatcharts\views\editHeatChartHeader.html" />
+    <Content Include="angular\templates\heatcharts\views\editHeatChartDetails.html" />
+    <Content Include="angular\templates\heatcharts\views\heatChartHeaders.html" />
+    <Content Include="angular\templates\home\controllers\indexCtrl.js" />
+    <Content Include="angular\templates\home\views\index.html" />
+    <Content Include="angular\templates\materialregisters\controllers\createMaterialRegisterHeaderCtrl.js" />
+    <Content Include="angular\templates\materialregisters\controllers\createMaterialRegisterSubseriesCtrl.js" />
+    <Content Include="angular\templates\materialregisters\controllers\deleteMaterialRegisterHeaderCtrl.js" />
+    <Content Include="angular\templates\materialregisters\controllers\downloadMaterialSubSeriesReportCtrl.js" />
+    <Content Include="angular\templates\materialregisters\controllers\downloadMaterialRegisterReportCtrl.js" />
+    <Content Include="angular\templates\materialregisters\controllers\editMaterialRegisterSubseriesCtrl.js" />
+    <Content Include="angular\templates\materialregisters\controllers\materialRegisterHeadersCtrl.js" />
+    <Content Include="angular\templates\materialregisters\controllers\editMaterialRegisterHeaderCtrl.js" />
+    <Content Include="angular\templates\materialregisters\views\createMaterialRegisterSubseries.html" />
+    <Content Include="angular\templates\materialregisters\views\createMaterialRegisterHeader.html" />
+    <Content Include="angular\templates\materialregisters\views\downloadMaterialSubSeriesReportModal.html" />
+    <Content Include="angular\templates\materialregisters\views\downloadMaterialRegisterReportModal.html" />
+    <Content Include="angular\templates\materialregisters\views\editmaterialRegisterSubseries.html" />
+    <Content Include="angular\templates\materialregisters\views\materialRegisterHeaders.html" />
+    <Content Include="angular\templates\materialregisters\views\deleteMaterialRegisterHeaderModal.html" />
+    <Content Include="angular\templates\materialregisters\views\editmaterialRegisterHeader.html" />
+    <Content Include="angular\templates\dimensions\controllers\createDimensionCtrl.js" />
+    <Content Include="angular\templates\dimensions\controllers\editDimensionCtrl.js" />
+    <Content Include="angular\templates\dimensions\controllers\dimensionsCtrl.js" />
+    <Content Include="angular\templates\dimensions\views\createDimension.html" />
+    <Content Include="angular\templates\dimensions\views\deleteDimensionModal.html" />
+    <Content Include="angular\templates\dimensions\views\editDimensionModal.html" />
+    <Content Include="angular\templates\dimensions\views\dimensions.html" />
+    <Content Include="angular\templates\tests\controllers\createTestCtrl.js" />
+    <Content Include="angular\templates\tests\controllers\editTestCtrl.js" />
+    <Content Include="angular\templates\tests\controllers\testsCtrl.js" />
+    <Content Include="angular\templates\tests\views\createTest.html" />
+    <Content Include="angular\templates\tests\views\deleteTestModal.html" />
+    <Content Include="angular\templates\tests\views\editTestModal.html" />
+    <Content Include="angular\templates\tests\views\tests.html" />
+    <Content Include="angular\templates\rawmaterialforms\controllers\createRawMaterialFormCtrl.js" />
+    <Content Include="angular\templates\rawmaterialforms\controllers\editRawMaterialFormCtrl.js" />
+    <Content Include="angular\templates\rawmaterialforms\controllers\rawMaterialFormsCtrl.js" />
+    <Content Include="angular\templates\rawmaterialforms\views\createRawMaterialForm.html" />
+    <Content Include="angular\templates\rawmaterialforms\views\deleteRawMaterialFormModal.html" />
+    <Content Include="angular\templates\rawmaterialforms\views\editRawMaterialFormModal.html" />
+    <Content Include="angular\templates\rawmaterialforms\views\rawMaterialForms.html" />
+    <Content Include="angular\templates\specifications\controllers\createSpecificationCtrl.js" />
+    <Content Include="angular\templates\specifications\controllers\editSpecificationCtrl.js" />
+    <Content Include="angular\templates\specifications\controllers\specificationsCtrl.js" />
+    <Content Include="angular\templates\specifications\views\createSpecification.html" />
+    <Content Include="angular\templates\specifications\views\deleteSpecificationModal.html" />
+    <Content Include="angular\templates\specifications\views\editSpecificationModal.html" />
+    <Content Include="angular\templates\specifications\views\specifications.html" />
+    <Content Include="angular\templates\suppliers\controllers\createSupplierCtrl.js" />
+    <Content Include="angular\templates\suppliers\controllers\suppliersCtrl.js" />
+    <Content Include="angular\templates\suppliers\controllers\editSupplierCtrl.js" />
+    <Content Include="angular\templates\suppliers\views\createSupplier.html" />
+    <Content Include="angular\templates\suppliers\views\suppliers.html" />
+    <Content Include="angular\templates\suppliers\views\deleteSupplierModal.html" />
+    <Content Include="angular\templates\suppliers\views\editSupplierModal.html" />
+    <Content Include="angular\templates\thirdpartyinspections\controllers\createThirdPartyInspectionCtrl.js" />
+    <Content Include="angular\templates\thirdpartyinspections\controllers\thirdPartyInspectionsCtrl.js" />
+    <Content Include="angular\templates\thirdpartyinspections\controllers\editThirdPartyInspectionCtrl.js" />
+    <Content Include="angular\templates\thirdpartyinspections\views\createThirdPartyInspection.html" />
+    <Content Include="angular\templates\thirdpartyinspections\views\thirdPartyInspections.html" />
+    <Content Include="angular\templates\thirdpartyinspections\views\deleteThirdPartyInspectionModal.html" />
+    <Content Include="angular\templates\thirdpartyinspections\views\editThirdPartyInspectionModal.html" />
+    <Content Include="angular\vendors\angularNew.js" />
+    <Content Include="angular\vendors\lodash.min.js" />
+    <Content Include="content\css\blank.gif" />
+    <Content Include="content\css\bootstrap-theme.css" />
+    <Content Include="content\css\bootstrap.css" />
+    <Content Include="content\css\custom-select.css" />
+    <Content Include="content\css\fancybox_overlay.png" />
+    <Content Include="content\css\fancybox_sprite.png" />
+    <Content Include="content\css\font-awesome.css" />
+    <Content Include="content\css\jquery.fancybox.css" />
+    <Content Include="content\css\loading-bar.css" />
+    <Content Include="content\css\morris.css" />
+    <Content Include="content\css\site.css" />
+    <Content Include="content\css\toastr.css" />
+    <Content Include="content\fonts\fontawesome-webfont.svg" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="angular\modules\common.core.js" />
+    <Content Include="angular\modules\common.ui.js" />
+    <Content Include="angular\vendors\angucomplete-alt.min.js" />
+    <Content Include="angular\vendors\angular-base64.js" />
+    <Content Include="angular\vendors\angular-cookies.js" />
+    <Content Include="angular\vendors\angular-file-upload.js" />
+    <Content Include="angular\vendors\angular-route.js" />
+    <Content Include="angular\vendors\angular-validator.js" />
+    <Content Include="angular\vendors\angular.js" />
+    <Content Include="angular\vendors\bootstrap.js" />
+    <Content Include="angular\vendors\jquery.fancybox-media.js" />
+    <Content Include="angular\vendors\jquery.fancybox.js" />
+    <Content Include="angular\vendors\jquery.js" />
+    <Content Include="angular\vendors\jquery.raty.js" />
+    <Content Include="angular\vendors\loading-bar.js" />
+    <Content Include="angular\vendors\modernizr.js" />
+    <Content Include="angular\vendors\morris.js" />
+    <Content Include="angular\vendors\raphael.js" />
+    <Content Include="angular\vendors\respond.src.js" />
+    <Content Include="angular\vendors\toastr.js" />
+    <Content Include="angular\vendors\ui-bootstrap-tpls-0.13.1.js" />
+    <Content Include="angular\vendors\underscore.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebForms\WebForm1.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\Bootstrapper.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\HeatChartsController.cs" />
+    <Compile Include="Controllers\DimensionsController.cs" />
+    <Compile Include="Controllers\TestsController.cs" />
+    <Compile Include="Controllers\SpecificationsController.cs" />
+    <Compile Include="Controllers\RawMaterialFormsController.cs" />
+    <Compile Include="Controllers\ThirdPartyInspectionsController.cs" />
+    <Compile Include="Controllers\SuppliersController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MaterialRegistersController.cs" />
+    <Compile Include="Core\ApiControllerBase.cs" />
+    <Compile Include="Core\ApiControllerBaseExtended.cs" />
+    <Compile Include="Core\AWS\S3UploadObject.cs" />
+    <Compile Include="Core\HeatChartBase.cs" />
+    <Compile Include="Core\Report\FileUploadResult.cs" />
+    <Compile Include="Core\Report\MimeMultipart.cs" />
+    <Compile Include="Core\PaginationSet.cs" />
+    <Compile Include="Core\Report\ReportGenerator.cs" />
+    <Compile Include="Core\Report\UploadMultipartFormProvider.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HeatchartDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HeatchartDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\Extensions\EntitiesExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForms\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="packages.config" />
+    <Content Include="content\fonts\fontawesome-webfont.eot" />
+    <Content Include="content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="content\fonts\fontawesome-webfont.woff" />
+    <Content Include="content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="content\fonts\FontAwesome.otf" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="HeatchartDBDataSet.xsc">
+      <DependentUpon>HeatchartDBDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="HeatchartDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HeatchartDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="HeatchartDBDataSet.xss">
+      <DependentUpon>HeatchartDBDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\HeatChartDB.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="content\images\" />
+    <Folder Include="Models\" />
+    <Folder Include="reports\heatcharts\" />
+    <Folder Include="reports\materialregisters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomDatasourceDataset\CustomDatasourceDataset.csproj">
+      <Project>{3e0177ac-3d69-44d5-8155-34eca0c5e5e8}</Project>
+      <Name>CustomDatasourceDataset</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HeatChart.DataRepository.Sql\HeatChart.DataRepository.Sql.csproj">
+      <Project>{0d5537d0-b79e-49d2-ad6a-86002ec6833d}</Project>
+      <Name>HeatChart.DataRepository.Sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HeatChart.Domain.Core\HeatChart.Domain.Core.csproj">
+      <Project>{dee5b546-80af-4677-a2be-fb6ffe5f779a}</Project>
+      <Name>HeatChart.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HeatChart.Entities\HeatChart.Entities.Sql.csproj">
+      <Project>{d2c69ae5-8c6c-4c10-b726-8e5498e96177}</Project>
+      <Name>HeatChart.Entities.Sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HeatChart.Infrastructure.Common\HeatChart.Infrastructure.Common.csproj">
+      <Project>{9c2589e1-855d-413e-a7cd-08ce82302348}</Project>
+      <Name>HeatChart.Infrastructure.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HeatChart.Infrastructure.Dependency\HeatChart.Infrastructure.Dependency.csproj">
+      <Project>{066d2c5c-2afe-4584-8d4e-2eec3e01a76e}</Project>
+      <Name>HeatChart.Infrastructure.Dependency</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HeatChart.ViewModels\HeatChart.ViewModels.csproj">
+      <Project>{016b6a5e-14e6-4685-990f-5aea6182de39}</Project>
+      <Name>HeatChart.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ModelMapper\ModelMapper.csproj">
+      <Project>{8230d17d-c2a6-43ca-bf97-f98384b37798}</Project>
+      <Name>ModelMapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="angular\templates\heatcharts\report\HeatChartReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\AWSSDK.S3.3.3.9\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1302</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1302/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

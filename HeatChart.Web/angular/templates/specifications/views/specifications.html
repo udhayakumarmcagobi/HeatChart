@@ -1,0 +1,49 @@
+﻿<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading clearfix">
+            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Home Chart Specifications</h4>
+            <div class="input-group">
+                <input id="inputSearchSpecifications" type="search" ng-model="filterSpecifications" class="form-control shortInputSearch"
+                       placeholder="Filter, search specifications..">
+                <div class="input-group-btn">
+                    <button class="btn btn-primary" ng-click="search();"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-primary" ng-click="clearSearch();"><i class="glyphicon glyphicon-remove-sign"></i></button>
+                    <button class="btn btn-primary" title="Add" ng-click="addNew();"><i class="fa fa-user-plus fa-fw"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6" ng-repeat="specification in Specifications | filter:filterSpecifications">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{specification.Name}}</strong><br />
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-condensed shortMargin">
+                                    <tr> <td class="shortPadding">Description:</td> <td class="shortPadding"><i>{{specification.Description}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Created Date:</td> <td class="shortPadding"><i>{{specification.CreatedOn | date:'mediumDate'}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Modified Date:</td> <td class="shortPadding"><i>{{specification.ModifiedOn | date:'mediumDate'}}</i></td> </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <div class="pull-right">
+                                <buton class="btn btn-primary btn-xs" ng-click="openEditDialog(specification);">Edit <i class="fa fa-pencil pull-right"></i></buton>
+                                <buton class="btn btn-primary btn-xs" ng-click="openDeleteDialog(specification);">Delete <i class="glyphicon glyphicon-remove-sign"></i></buton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-center">
+                <ng-custom-pager page="{{page}}" pages-count="{{pagesCount}}" total-count="{{totalCount}}" search-func="search(page)">
+                </ng-custom-pager>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+﻿<div class="row">
+    <!--Material Registers Starts-->
+    <div class="col-md-8">
+        <div class="panel panel-primary" id="panelRecentMaterialRegisters">
+            <div class="panel-heading">
+                <h3 class="panel-title">Recent Material Registers</h3>
+            </div>
+            <div class="panel-body">
+                <div ng-if="loadingMaterialRegisters">
+                    <div class="col-xs-4"></div> <div class="col-xs-4">
+                        <i class="fa fa-refresh fa-5x fa-spin"></i> <label class="label label-primary">Loading material registers...</label>
+                    </div> <div class="col-xs-4"></div>
+                </div>
+                <div class="col-xs-12 col-sm-6 materialRegister" ng-repeat="materialRegister in recentMaterialRegisters">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{materialRegister.CTNumber}} </strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-condensed shortMargin">
+                                    <tr> <td class="shortPadding">Supplier Name:</td> <td class="shortPadding"><i>{{materialRegister.SupplierSelected.Name}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Supplier PO Number:</td> <td class="shortPadding"><i>{{materialRegister.SupplierPONumber}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Supplier PO Date:</td> <td class="shortPadding"><i>{{materialRegister.SupplierPODate | date:'mediumDate'}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Third Party Inspection:</td> <td class="shortPadding"><i>{{materialRegister.ThirdPartyInspectionSelected.Name}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Raw Material Forms:</td> <td class="shortPadding"><i>{{materialRegister.RawMaterialFormSelected.Name}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Created By:</td> <td class="shortPadding"><i>{{materialRegister.CreatedBy}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Modified By:</td> <td class="shortPadding"><i>{{materialRegister.ModifiedBy}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Created On:</td> <td class="shortPadding"><i>{{materialRegister.CreatedOn | date:'mediumDate'}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Modified On:</td> <td class="shortPadding"><i>{{materialRegister.ModifiedOn | date:'mediumDate'}}</i></td> </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <div class="pull-right">
+                                <buton class="btn btn-primary btn-xs" ng-click="editMaterialRegister(materialRegister);">Edit <i class="fa fa-pencil pull-right"></i></buton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <p class="text-center"><em>Want to add a new Material Register? Head over to the create Material Register form.</em></p>
+                <p class="text-center"><a ng-href="#/materialregisters/create" class="btn btn-default">Create new Material Register</a></p>
+            </div>
+        </div>
+    </div>
+    <!--Material Registers Ends-->
+    <!--Heat Charts Starts-->
+    <div class="col-md-4">
+        <div class="panel panel-success" id="panelRecentHeatCharts">
+            <div class="panel-heading"> <h3 class="panel-title">Recent Heat Charts</h3> </div>
+            <div class="panel-body">
+                <div ng-if="loadingHeatCharts">
+                    <div class="col-xs-4"></div> <div class="col-xs-4">
+                        <i class="fa fa-refresh fa-5x fa-spin"></i> <label class="label label-primary">Loading Heat Charts..</label>
+                    </div> <div class="col-xs-4"></div>
+                </div>
+                <div class="col-xs-12 col-sm-12 heatchart" ng-repeat="heatChart in recentHeatCharts">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{heatChart.HeatChartNumber}} </strong>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-condensed shortMargin">
+                                    <tr> <td class="shortPadding">Customer Name:</td> <td class="shortPadding"><i>{{heatChart.CustomerSelected.Name}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Customer PO Number:</td> <td class="shortPadding"><i>{{heatChart.CustomerPONumber}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Customer PO Equipment:</td> <td class="shortPadding"><i>{{heatChart.CustomerPOEquipment}}</i></td> </tr>
+
+                                    <tr> <td class="shortPadding">Drawing Number:</td> <td class="shortPadding"><i>{{heatChart.DrawingNumber}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Drawing Revision:</td> <td class="shortPadding"><i>{{heatChart.DrawingRevision}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Tag Number:</td> <td class="shortPadding"><i>{{heatChart.TagNumber}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Third Party Inspection:</td> <td class="shortPadding"><i>{{heatChart.ThirdPartyInspectionSelected.Name}}</i></td> </tr>
+
+
+                                    <tr> <td class="shortPadding">Created By:</td> <td class="shortPadding"><i>{{heatChart.CreatedBy}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Modified By:</td> <td class="shortPadding"><i>{{heatChart.ModifiedBy}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Created On:</td> <td class="shortPadding"><i>{{heatChart.CreatedOn | date:'mediumDate'}}</i></td> </tr>
+                                    <tr> <td class="shortPadding">Modified On:</td> <td class="shortPadding"><i>{{heatChart.ModifiedOn | date:'mediumDate'}}</i></td> </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <div class="pull-right">
+                                <buton class="btn btn-primary btn-xs" ng-click="editHeatChart(heatChart);">Edit <i class="fa fa-pencil pull-right"></i></buton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="panel-footer">
+                <p class="text-center"><em>Want to add a new Heat Chart? Head over to the create Heat Chart form.</em></p>
+                <p class="text-center"><a ng-href="#/heatcharts/create" class="btn btn-default">Create new Heat Chart</a></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--Heat Charts Ends-->

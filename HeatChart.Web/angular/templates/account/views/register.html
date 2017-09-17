@@ -1,0 +1,26 @@
+﻿<div class="row">
+    <form class="form-signin" role="form" novalidate angular-validator name="userRegistrationForm" angular-validator-submit="register()">
+        <h3 class="form-signin-heading">Add User</h3> <div class="form-group">
+            <label for="inputUsername" class="">Username</label>
+            <input type="text" name="inputUsername" class="form-control" ng-model="user.username"
+                   placeholder="Username" validate-on="blur" required required-message="'Username is required'">
+
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="{{inputType}}" name="inputPassword" class="form-control" ng-model="user.password"
+                   placeholder="Password" validate-on="blur" onshow="" required required-message="'Password is required'">
+            <div class="row" style="margin-left:0%;">
+                <input type="checkbox" id="checkbox" ng-model="passwordCheckbox" ng-click="hideShowPassword()" />
+                <label for="checkbox" ng-if="passwordCheckbox">Hide characters</label>
+                <label for="checkbox" ng-if="!passwordCheckbox">Show characters</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input type="email" name="inputEmail" class="form-control" ng-model="user.email"
+                   placeholder="Email address" validate-on="blur" required required-message="'Email is required'">
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Add User</button>
+    </form>
+</div>

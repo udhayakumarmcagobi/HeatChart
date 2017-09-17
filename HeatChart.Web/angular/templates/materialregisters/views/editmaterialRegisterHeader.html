@@ -1,0 +1,294 @@
+﻿<hr />
+<div class="alert alert-info alert-dismissable">
+    <a class="panel-close close" data-dismiss="alert">×</a>
+    <i class="fa fa-user-plus fa-3x"></i> Create new MaterialRegisterHeader. Make sure you fill all required fields.
+</div>
+<div class="row">
+    <form role="form" angular-validator name="addMaterialRegisterHeaderForm" angular-validator-submit="Update()">
+        <div class="col-sm-12">
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="CTNumber" class="control-label vertical-middle-align lab-important">CT Number</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" readonly class="form-control" ng-model="EditedMaterialRegisterHeader.CTNumber"
+                                   name="CTNumber" id="CTNumber" placeholder="CT Number" validate-on="blur"
+                                   required required-message="'CTNumber is required'">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group  form-inline">
+                        <div class="col-sm-6">
+                            <label for="Suppliers" class="control-label vertical-middle-align lab-important">Suppliers</label>
+                        </div>
+                        <div class="form-group">
+                            <div ng-custom-select="supplier as supplier.Name for supplier in EditedMaterialRegisterHeader.Suppliers | filter: { Name: $searchTerm }"
+                                 ng-model="EditedMaterialRegisterHeader.SupplierSelected">
+                                <div class="pull-left">
+                                    <strong>{{ supplier.Name }}</strong><br />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="SupplierPONumber" class="control-label vertical-middle-align lab-important">Supplier PO Number</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="EditedMaterialRegisterHeader.SupplierPONumber"
+                                   name="SupplierPONumber" id="SupplierPONumber" placeholder="Supplier PO Number" required required-message="'Supplier PO Number is required'">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="SupplierPODate" class="control-label vertical-middle-align lab-important">Supplier PO Date</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control" name="SupplierPODate" id="SupplierPODate"
+                                   ng-model="EditedMaterialRegisterHeader.SupplierPODate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="ThirdPartyInspections" class="control-label vertical-middle-align lab-important">Third Party Inspections</label>
+                        </div>
+                        <div class="form-group">
+                            <div ng-custom-select="tpi as tpi.Name for tpi in EditedMaterialRegisterHeader.ThirdPartyInspections | filter: { Name: $searchTerm }"
+                                 ng-model="EditedMaterialRegisterHeader.ThirdPartyInspectionSelected">
+                                <div class="pull-left">
+                                    <strong>{{ tpi.Name }}</strong><br />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="RawMaterialForms" class="control-label vertical-middle-align lab-important">Raw Material Forms</label>
+                        </div>
+                        <div class="form-group">
+                            <div ng-custom-select="rawMaterialForm as rawMaterialForm.Name for rawMaterialForm in EditedMaterialRegisterHeader.RawMaterialForms | filter: { Name: $searchTerm }"
+                                 ng-model="EditedMaterialRegisterHeader.RawMaterialFormSelected">
+                                <div class="pull-left">
+                                    <strong>{{ rawMaterialForm.Name }}</strong><br />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="Specifications" class="control-label vertical-middle-align lab-important">Specifications</label>
+                        </div>
+                        <div class="form-group">
+                            <div ng-custom-select="specification as specification.Name for specification in EditedMaterialRegisterHeader.Specifications | filter: { Name: $searchTerm }"
+                                 ng-model="EditedMaterialRegisterHeader.SpecificationSelected">
+                                <div class="pull-left">
+                                    <strong>{{ specification.Name }}</strong><br />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="Dimension" class="control-label vertical-middle-align lab-important">Dimension</label>
+                        </div>
+                        <div class="form-group">
+                            <div ng-custom-select="dimension as dimension.Name for dimension in EditedMaterialRegisterHeader.Dimensions | filter: { Name: $searchTerm }"
+                                 ng-model="EditedMaterialRegisterHeader.DimensionSelected">
+                                <div class="pull-left">
+                                    <strong>{{ dimension.Name }}</strong><br />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="Quantity" class="control-label vertical-middle-align lab-important">Quantity</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="EditedMaterialRegisterHeader.Quantity"
+                                   name="Quantity" id="Quantity" placeholder="Quantity" required required-message="'Quantity is required'">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-3" style="margin-right:-1%;">
+                            <label for="OtherInfo" class="control-label vertical-middle-align lab-important">Other Information</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" class="form-control" ng-model="EditedMaterialRegisterHeader.OtherInfo"
+                                      name="OtherInfo" id="OtherInfo" placeholder="Other Info" validate-on="blur" />
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row margin-top-one">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong class="ng-binding">Material Register Subseries</strong><br>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive" ng-if="EditedMaterialRegisterHeader.MaterialRegisterSubSeriess.length > 0">
+                                <table class="table table-condensed table-bordered">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th>Sub Series Number</th>
+                                            <th class="text-center">Test Details</th>
+                                            <th>Mill Name</th>
+                                            <th>Mill TC Number</th>
+                                            <th>Mill TC Date</th>
+                                            <th>Lab Name</th>
+                                            <th>Lab TC Number</th>
+                                            <th>Lab TC Date</th>
+                                            <th>File Name</th>
+                                            <th>Status</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="text-center" ng-repeat="materialSub in EditedMaterialRegisterHeader.MaterialRegisterSubSeriess">
+
+                                            <td class="shortPadding">{{materialSub.SubSeriesNumber}}</td>
+                                            <td class="shortPadding">{{ConstructSelectedTests(materialSub)}}</td>
+
+                                            <td>{{materialSub.MillDetail.MillName}}</td>
+                                            <td>{{materialSub.MillDetail.TCNumber}}</td>
+                                            <td>{{materialSub.MillDetail.TCDate | date:'mediumDate'}}</td>
+
+                                            <td>{{materialSub.LabReport.LabName}}</td>
+                                            <td>{{materialSub.LabReport.TCNumber}}</td>
+                                            <td>{{materialSub.LabReport.TCDate | date:'mediumDate'}}</td>
+
+                                            <td class="shortPadding">{{ConstructSelectedFileNames(materialSub)}}</td>
+
+                                            <td>{{materialSub.Status}}</td>
+                                            <td>
+                                                <buton class="btn btn-primary btn-xs" ng-click="EditSubSeriesDialog(materialSub);">
+                                                    Edit
+                                                    <i class="fa fa-pencil pull-right"></i>
+                                                </buton>
+                                            </td>
+                                            <td>
+                                                <buton class="btn btn-primary btn-xs" ng-click="DeleteSubSeries(materialSub);">
+                                                    Delete
+                                                    <i class="glyphicon glyphicon-remove-sign"></i>
+                                                </buton>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <div ng-if="EditedMaterialRegisterHeader.MaterialRegisterSubSeriess.length == 0">
+                                There is Sub Series Details
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <div class="pull-right">
+                                <buton class="btn btn-primary btn-xs" ng-click="AddSubSeriesDialog();">Add SubSeries <i class="fa fa-plus-circle fa-fw pull-right"></i></buton>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-11">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-2">
+                            <label for="Status" class="control-label lab-important">Status</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <input type="radio" ng-model="EditedMaterialRegisterHeader.Status" name="Status" 
+                                       id="StatusAccepted" value="Accepted" /> <label for="StatusAccepted">Accepted</label>
+                                <input type="radio" ng-model="EditedMaterialRegisterHeader.Status" name="Status" 
+                                       id="StatusRejected" value="Rejected" /> <label for="StatusRejected">Rejected</label>
+                                <input type="radio" ng-model="EditedMaterialRegisterHeader.Status" name="Status" 
+                                       id="StatusPartiallyAccepted" value="PartiallyAccepted" /> <label for="StatusPartiallyAccepted">Partially Accepted</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+
+                </div>
+
+            </div>
+
+            <div class="row margin-top-one" ng-show="EditedMaterialRegisterHeader.Status == 'PartiallyAccepted'">
+                <div class="col-sm-11">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-2">
+                            <label for="PartiallyAcceptedRemarks" class="control-label lab-important">Partially Accepted Remarks</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedMaterialRegisterHeader.PartiallyAcceptedRemarks" name="PartiallyAcceptedRemarks"
+                                       id="PartiallyAcceptedRemarks" placeholder="Partially Accepted Remarks"
+                                        />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row margin-top-one">
+                <div class="col-sm-12 text-center">
+                    <input type="submit" name="submit" value="Update" class="btn btn-info">
+                    <input type="button" name="DownloadAllReports" value="Download All Reports"  ng-show="EditedMaterialRegisterHeader.MaterialRegisterSubSeriess.length > 0"
+                           class="btn btn-info" ng-click="DownloadAllReports(EditedMaterialRegisterHeader)">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

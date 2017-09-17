@@ -1,0 +1,221 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Add Heat Chart Details with Material Register
+    </div>
+    <div class="panel-body">
+        <form role="form" novalidate angular-validator name="editHeatChartDetails">
+            <div class="col-sm-12">
+                <div class="panel panel-info" id="HeatChartSpecificPanel">
+                    <div class="panel-heading">
+                        Heat Chart Specific
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="PartNumber" class="control-label vertical-middle-align">Part Number</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedHeatChartDetails.PartNumber" name="PartNumber"
+                                       id="PartNumber" placeholder="Part Number" />
+                            </div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="SheetNo" class="control-label vertical-middle-align">Sheet No</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedHeatChartDetails.SheetNo" name="SheetNo"
+                                       id="SheetNo" placeholder="Sheet No" />
+                            </div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="Dimension" class="control-label vertical-middle-align lab-important">Dimension</label>
+                            </div>
+                            <div class="form-group">
+                                <div ng-custom-select="dimension as dimension.Name for dimension in EditedHeatChartDetails.Dimensions | filter: { Name: $searchTerm }"
+                                     ng-model="EditedHeatChartDetails.DimensionSelected">
+                                    <div class="pull-left">
+                                        <strong>{{ dimension.Name }}</strong><br />
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="Specifications" class="control-label vertical-middle-align">Specification</label>
+                            </div>
+                            <div class="form-group">
+                                <div ng-custom-select="spec as spec.Name for spec in EditedHeatChartDetails.Specifications | filter: { Name: $searchTerm }"
+                                     ng-model="EditedHeatChartDetails.SpecificationSelected">
+                                    <div class="pull-left">
+                                        <strong>{{ spec.Name }}</strong><br />
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="panel panel-info" id="MaterialRegister">
+                    <div class="panel-heading">
+                        Material Register
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="MaterialRegisterHeader" class="control-label vertical-middle-align">CT Number</label>
+                            </div>
+                            <div class="form-group">
+                                <div ng-custom-select="mr as mr.CTNumber for mr in EditedHeatChartDetails.MaterialRegisterHeaders | filter: { CTNumber: $searchTerm }"
+                                     ng-model="EditedHeatChartDetails.MaterialRegisterHeaderSelected">
+                                    <div class=" pull-left">
+                                        <strong>{{ mr.CTNumber }}</strong><br />
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="MaterialRegisterSubSeries" class="control-label vertical-middle-align">Sub Series</label>
+                            </div>
+                            <div class="form-group">
+                                <div ng-custom-select="mrSub as mrSub.SubSeriesNumber for mrSub in EditedHeatChartDetails.MaterialRegisterSubSeries | filter: { SubSeriesNumber: $searchTerm }"
+                                     ng-model="EditedHeatChartDetails.MaterialRegisterSubSeriesSelected">
+                                    <div class=" pull-left">
+                                        <strong>{{ mrSub.SubSeriesNumber }}</strong><br />
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="MaterialRegisterDimension" class="control-label vertical-middle-align">Dimension</label>
+                            </div>
+                            <div class="form-group">
+                                <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterHeaderSelected.DimensionSelected.Name}}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="MaterialRegisterSpecification" class="control-label vertical-middle-align">Specification</label>
+                            </div>
+                            <div class="form-group">
+                                <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterHeaderSelected.SpecificationSelected.Name}}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline" ng-show="(EditedHeatChartDetails.MaterialRegisterHeaderSelected != undefined &&
+                                                                      EditedHeatChartDetails.MaterialRegisterHeaderSelected.Status != '' )">
+                            <div class="col-sm-4">
+                                <label for="MaterialRegisterStatus" class="control-label vertical-middle-align">MR Status</label>
+                            </div>
+                            <div class="form-group">
+                                <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterHeaderSelected.Status}}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline" ng-show="(EditedHeatChartDetails.MaterialRegisterSubSeriesSelected != undefined &&
+                                                                      EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.Status != '' )">
+                            <div class="col-sm-4">
+                                <label for="MaterialSubSeriesStatus" class="control-label vertical-middle-align">MR Sub Series Status</label>
+                            </div>
+                            <div class="form-group">
+                                <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.Status}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="panel panel-info" id="MillDetails" ng-hide="EditedHeatChartDetails.MaterialRegisterSubSeriesSelected == null ||
+                                                                        EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.MillDetail == null"
+                         ng-show="(EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.MillDetail.MillName != '' &&
+                     EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.MillDetail.TCNumber != '')">
+                        <div class="panel-heading">
+                            Mill Details
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group form-inline">
+                                <div class="col-sm-4">
+                                    <label for="MaterialSubSeriesMillName" class="control-label vertical-middle-align">Mill Name</label>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.MillDetail.MillName}}</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-inline">
+                                <div class="col-sm-4">
+                                    <label for="MaterialSubSeriesMillTCNumber" class="control-label vertical-middle-align">Mill TC Number</label>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.MillDetail.TCNumber}}</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-inline">
+                                <div class="col-sm-4">
+                                    <label for="MaterialSubSeriesMillTCDate" class="control-label vertical-middle-align">Mill TC Date</label>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.MillDetail.TCDate | date:'mediumDate'}}</span>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info" id="LabDetails" ng-hide="EditedHeatChartDetails.MaterialRegisterSubSeriesSelected == null ||
+                                                                        EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.LabReport == null"
+                         ng-show="(EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.LabReport.LabName != ''
+                                && EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.LabReport.TCNumber != '')">
+                        <div class="panel-heading">
+                            Lab Details
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group form-inline">
+                                <div class="col-sm-4">
+                                    <label for="MaterialSubSeriesLabName" class="control-label vertical-middle-align">Lab Name</label>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.LabReport.LabName}}</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-inline">
+                                <div class="col-sm-4">
+                                    <label for="MaterialSubSeriesLabTCNumber" class="control-label vertical-middle-align">Lab TC Number</label>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.LabReport.TCNumber}}</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-inline">
+                                <div class="col-sm-4">
+                                    <label for="MaterialSubSeriesLabTCDate" class="control-label vertical-middle-align">Lab TC Date</label>
+                                </div>
+                                <div class="form-group">
+                                    <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.LabReport.TCDate | date:'mediumDate'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="UpdateHeatChartDetails()">Update </button>
+        </div>
+    </div>
+</div>

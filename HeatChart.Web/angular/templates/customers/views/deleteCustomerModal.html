@@ -1,0 +1,23 @@
+﻿
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Delete {{EditedCustomer.Name}}
+    </div>
+    <div class="panel-body">
+        <form role="form" novalidate angular-validator name="deleteCustomerForm">
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">Are you sure you want to delete?</div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="deleteCustomer()">Yes</button>
+        </div>
+    </div>
+</div>

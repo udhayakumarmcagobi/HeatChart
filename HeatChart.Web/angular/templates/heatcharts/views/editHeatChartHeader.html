@@ -1,0 +1,323 @@
+﻿<hr />
+<div class="alert alert-info alert-dismissable">
+    <a class="panel-close close" data-dismiss="alert">×</a>
+    <i class="fa fa-user-plus fa-3x"></i> Edit HeatChartHeader. Make sure you fill all required fields.
+</div>
+<div class="row">
+    <form role="form" angular-validator name="editHeatChartHeaderForm" angular-validator-submit="Update()">
+        <div class="col-sm-12">
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="HeatChartNumber" class="control-label vertical-middle-align lab-important">Heat Chart Number</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" readonly class="form-control" ng-model="EditedHeatChartHeader.HeatChartNumber"
+                                   name="HeatChartNumber" id="HeatChartNumber" placeholder="Heat Chart Number" validate-on="blur"
+                                   required required-message="'Heat Chart Number is required'">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="Customers" class="control-label vertical-middle-align lab-important">Customers</label>
+                        </div>
+                        <div class="form-group">
+                            <div ng-custom-select="customer as customer.Name for customer in EditedHeatChartHeader.Customers | filter: { Name: $searchTerm }"
+                                 ng-model="EditedHeatChartHeader.CustomerSelected">
+                                <div class="pull-left">
+                                    <strong>{{ customer.Name }}</strong><br />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="CustomerPONumber" class="control-label vertical-middle-align lab-important">Customer PO Number</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="EditedHeatChartHeader.CustomerPONumber"
+                                   name="CustomerPONumber" id="CustomerPONumber" placeholder="Customer PO Number" required required-message="'Customer PO Number is required'">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="CustomerPOEquipment" class="control-label vertical-middle-align lab-important">Customer PO Equipment</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="EditedHeatChartHeader.CustomerPOEquipment"
+                                   name="CustomerPOEquipment" id="CustomerPOEquipment" required required-message="'Customer PO Equipment is required'"
+                                   placeholder="Customer PO Equipment">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="DrawingNumber" class="control-label vertical-middle-align lab-important">Drawing Number</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="EditedHeatChartHeader.DrawingNumber" name="DrawingNumber"
+                                   id="DrawingNumber" placeholder="DrawingNumber" required required-message="'Drawing Number is required'" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="DrawingRevision" class="control-label vertical-middle-align lab-important">Drawing Revision</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="EditedHeatChartHeader.DrawingRevision" name="DrawingRevision"
+                                   id="DrawingRevision" placeholder="DrawingRevision" required required-message="'Drawing Revision is required'" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="TagNumber" class="control-label vertical-middle-align lab-important">Tag Number</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="EditedHeatChartHeader.TagNumber" name="TagNumber"
+                                   id="TagNumber" placeholder="TagNumber" required required-message="'Tag Number is required'" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="JobNumber" class="control-label vertical-middle-align lab-important">Job Number</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="EditedHeatChartHeader.JobNumber" name="JobNumber"
+                                   id="JobNumber" placeholder="Job Number" required required-message="'job Number is required'" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="ThirdPartyInspections" class="control-label vertical-middle-align">Third Party Inspections</label>
+                        </div>
+                        <div class="form-group">
+                            <div ng-custom-select="tpi as tpi.Name for tpi in EditedHeatChartHeader.ThirdPartyInspections | filter: { Name: $searchTerm }"
+                                 ng-model="EditedHeatChartHeader.ThirdPartyInspectionSelected">
+                                <div class="pull-left">
+                                    <strong>{{ tpi.Name }}</strong><br />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="Plant" class="control-label vertical-middle-align">Plant</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="EditedHeatChartHeader.Plant" name="Plant"
+                                   id="Plant" placeholder="Plant" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="NoOfEquipment" class="control-label vertical-middle-align">No Of Equipment</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="EditedHeatChartHeader.NoOfEquipment" name="NoOfEquipment"
+                                   id="NoOfEquipment" placeholder="NoOfEquipment" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-3" style="margin-right:-1%;">
+                            <label for="OtherInfo" class="control-label vertical-middle-align lab-important">Other Information</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" class="form-control" ng-model="EditedHeatChartHeader.OtherInfo"
+                                      name="OtherInfo" id="OtherInfo" placeholder="Other Info" validate-on="blur" />
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row margin-top-one">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong class="ng-binding">Heat Chart Details</strong><br>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive" ng-if="EditedHeatChartHeader.HeatChartDetails.length > 0">
+                                <table class="table table-condensed table-bordered">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th>CT Number</th>
+                                            <th>Sub Series Number</th>
+                                            <th>Part Number</th>
+                                            <th>Sheet No</th>
+                                            <th>HC Dimension</th>
+                                            <th>HC Specification</th>
+                                            <th>MR Dimension</th>
+                                            <th>MR Specification</th>
+                                            <th>MR Status</th>
+                                            <th>MR SubSeries Status</th>
+                                            <th>Mill Name</th>
+                                            <th>Mill TC Number</th>
+                                            <th>Mill TC Date</th>
+                                            <th>Lab Name</th>
+                                            <th>Lab TC Number</th>
+                                            <th>Lab TC Date</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="text-center" ng-repeat="heatChartDetail in EditedHeatChartHeader.HeatChartDetails">
+
+                                            <td><a class="link_cursor" ng-click="OpenMaterialRegister(heatChartDetail)">{{heatChartDetail.MaterialRegisterHeaderSelected.CTNumber}}</a></td>
+                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.SubSeriesNumber}}</td>
+
+                                            <td>{{heatChartDetail.PartNumber}}</td>
+                                            <td>{{heatChartDetail.SheetNo}}</td>
+                                            <td>{{heatChartDetail.Dimension}}</td>
+                                            <td>{{heatChartDetail.SpecificationSelected.Name}}</td>
+
+                                            <td>{{heatChartDetail.MaterialRegisterHeaderSelected.Dimension}}</td>
+                                            <td>{{heatChartDetail.MaterialRegisterHeaderSelected.SpecificationSelected.Name}}</td>
+
+                                            <td>{{heatChartDetail.MaterialRegisterHeaderSelected.Status}}</td>
+                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.Status}}</td>
+
+                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.MillDetail.MillName}}</td>
+                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.MillDetail.TCNumber}}</td>
+                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.MillDetail.TCDate | date:'mediumDate'}}</td>
+
+                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.LabReport.LabName}}</td>
+                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.LabReport.TCNumber}}</td>
+                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.LabReport.TCDate | date:'mediumDate'}}</td>
+
+                                            <td>
+                                                <buton class="btn btn-primary btn-xs" ng-click="EditHeatChartDetailsDialog(heatChartDetail);">
+                                                    Edit
+                                                    <i class="fa fa-pencil pull-right"></i>
+                                                </buton>
+                                            </td>
+                                            <td>
+                                                <buton class="btn btn-primary btn-xs" ng-click="DeleteHeatChartDetails(heatChartDetail);">
+                                                    Delete
+                                                    <i class="glyphicon glyphicon-remove-sign"></i>
+                                                </buton>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <div ng-if="EditedHeatChartHeader.HeatChartDetails.length == 0">
+                                There is no Heat Chart Details
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <div class="pull-right">
+                                <buton class="btn btn-primary btn-xs" ng-click="AddHeatChartDetailsDialog();">
+                                    Add Heat Chart Details
+                                    <i class="fa fa-plus-circle fa-fw pull-right"></i>
+                                </buton>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row margin-top-one">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong class="ng-binding">Material Register Report File Details</strong><br>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive" ng-if="EditedHeatChartHeader.HeatChartDetails.length > 0">
+                                <table class="table table-condensed table-bordered">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th class="text-center">CT Number</th>
+                                            <th class="text-center">Sub Series Number</th>
+                                            <th class="text-center">File Names</th>
+                                            <th class="text-center">Download</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="text-center" ng-repeat="heatChartDetail in EditedHeatChartHeader.HeatChartDetails">
+
+                                            <td>{{heatChartDetail.MaterialRegisterHeaderSelected.CTNumber}}</td>
+                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.SubSeriesNumber}}</td>
+                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.MaterialRegisterFileDetails[0].FileName}}</td>
+                                            <td>
+                                                <buton class="btn btn-primary btn-xs" ng-click="DownloadAll(heatChartDetail.MaterialRegisterSubSeriesSelected);">
+                                                    Download
+                                                    <i class="fa fa-download pull-right"></i>
+                                                </buton>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                            <div ng-if="EditedHeatChartHeader.HeatChartDetails.length == 0">
+                                There is no Material Register Report Files
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row margin-top-one">
+                <div class="col-sm-12 text-center">
+                    <input type="submit" name="submit" value="Update" class="btn btn-info">
+                    <input type="button" name="generateHeatChart" value="Generate Heat Chart" class="btn btn-info" ng-click="GenerateHeatChart()">
+                    <input type="button" name="DownloadAllReports" value="Download All Reports" class="btn btn-info" ng-click="DownloadAllReports(EditedHeatChartHeader)">
+                </div>
+            </div>
+
+            <div class="row margin-top-one">
+            </div>
+        </div>
+    </form>
+</div>

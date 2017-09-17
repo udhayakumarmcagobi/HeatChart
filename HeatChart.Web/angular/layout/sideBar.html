@@ -1,0 +1,49 @@
+﻿<div id="sidebar" class="sidebar-offcanvas">
+    <div class="col-md-12">
+        <h3></h3>
+        <ul class="nav nav-pills nav-stacked">
+            <li class="nav-divider"></li>
+
+            <!--Home Starts-->
+            <li class=""><a ng-href="#/">Home<i class="fa fa-home fa-fw pull-right"></i></a></li>
+            <li class="nav-divider"></li>
+            <!--Home Ends-->
+            <!--HeatChart Starts-->
+            <li class=""><a ng-href="#/materialregisters">Material Registers</a></li>
+            <li><a ng-href="#/materialregisters/create">Add Material Register<i class="fa fa-plus-circle fa-fw pull-right"></i></a></li>
+            <li class="nav-divider"></li>
+            <!--HeatChart Ends-->
+            <!--Material Register Starts-->
+            <li class=""><a ng-href="#/heatcharts">Heat Charts</a></li>
+            <li><a ng-href="#/heatcharts/create">Add HeatChart<i class="fa fa-plus-circle fa-fw pull-right"></i></a></li>
+            <li class="nav-divider"></li>
+            <!--Material Register Ends-->
+            <!--Master screen Starts-->
+            <li class=""><a ng-href="#/customers">Customers<i class="fa fa-users fa-fw pull-right"></i></a></li>
+            <li class=""><a ng-href="#/suppliers">Suppliers<i class="fa fa-users fa-fw pull-right"></i></a></li>
+            <li class=""><a ng-href="#/thirdpartyinspections">Third Party Inspections</a></li>
+            <li class=""><a ng-href="#/rawmaterialforms">Raw Material Forms</a></li>
+            <li class=""><a ng-href="#/specifications">Specifications</a></li>
+            <li class=""><a ng-href="#/dimensions">Dimensions</a></li>
+            <li class=""><a ng-href="#/tests">Tests</a></li>
+            <li class="nav-divider"></li>
+            <li ng-show="userData.isUserLoggedIn && role == 'Admin'" class=""><a ng-href="#/users">Users</a></li>
+            <li ng-show="userData.isUserLoggedIn && role == 'Admin'" class=""><a ng-href="#/register">Add User<i class="fa fa-plus-circle fa-fw pull-right"></i></a></li>
+            <li ng-show="userData.isUserLoggedIn" class=""><a ng-href="#/changepassword">Change Password</a></li>
+            <li class="nav-divider"></li>
+            <!--Master screen Ends-->
+            <!--Reports Starts-->
+            <!--<li class=""><a ng-href="#/heatchartreports">Heat Chart Reports<i class="fa fa-leanpub fa-fw pull-right"></i></a></li>
+            <li class=""><a ng-href="#/materialregisterreports">Material Register Reports<i class="fa fa-leanpub fa-fw pull-right"></i></a></li>
+            <li class="nav-divider"></li>-->
+            <!--Reports Ends-->
+            <!--login Starts-->
+            <li><a ng-href="#/login" ng-if="!userData.isUserLoggedIn">Login<i class="fa fa-sign-in fa-fw pull-right"></i></a></li>
+            <li>
+                <button type="button" class="btn btn-danger btn-sm" ng-click="logout();" ng-if="userData.isUserLoggedIn">Logout<i class="fa fa-sign-out fa-fw pull-right"></i></a>
+            </li>
+            <!--Login Ends-->
+
+        </ul>
+    </div>
+</div>

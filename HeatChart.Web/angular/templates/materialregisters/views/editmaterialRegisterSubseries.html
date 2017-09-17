@@ -1,0 +1,205 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Edit Material Register Sub series
+    </div>
+    <div class="panel-body">
+        <form role="form" novalidate angular-validator name="editMaterialRegisterSubSeries">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-4">
+                            <label for="SubSeriesNumber" class="control-label vertical-middle-align">Sub Series Number</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" ng-model="EditedMaterialSubSeries.SubSeriesNumber" name="SubSeriesNumber"
+                                   id="SubSeriesNumber" placeholder="SubSeriesNumber" validate-on="blur"
+                                   required required-message="'SubSeriesNumber is required'">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-4">
+                            <label for="LabOrMillReports" class="control-label vertical-middle-align">Mill or Lab Details</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" ng-model="EditedMaterialSubSeries.ReportSelected" name="LabOrMillReports"
+                                   id="MillDetails" value="MillDetails" /> <label for="MillDetails">Mill Details</label>
+                            <input type="radio" ng-model="EditedMaterialSubSeries.ReportSelected" name="LabOrMillReports"
+                                   id="LabReports" value="LabReports" /> <label for="LabReports">Lab Details</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Mill Details Starts-->
+                <div class="panel panel-info" id="MillPanel" ng-show="EditedMaterialSubSeries.ReportSelected == 'MillDetails'">
+                    <div class="panel-heading">
+                        Mill Details
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="MillName" class="control-label vertical-middle-align">MillName</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedMaterialSubSeries.MillDetail.MillName" name="MillName"
+                                       id="MillName" placeholder="MillName" />
+                            </div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="HeatOrLotNumber" class="control-label vertical-middle-align">Heat Or Lot Number</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedMaterialSubSeries.MillDetail.HeatOrLotNumber" name="HeatOrLotNumber"
+                                       id="HeatOrLotNumber" placeholder="Heat Or Lot Number" />
+                            </div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="ProductNumber" class="control-label vertical-middle-align">Product Number</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedMaterialSubSeries.MillDetail.ProductNumber" name="ProductNumber"
+                                       id="ProductNumber" placeholder="Product Number" />
+                            </div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="MillTCNumber" class="control-label vertical-middle-align">TCNumber</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedMaterialSubSeries.MillDetail.TCNumber" name="MillTCNumber"
+                                       id="MillTCNumber" placeholder="Mill TC Number">
+                            </div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="MillTCDate" class="control-label vertical-middle-align">Mill TC Date</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control" name="MillTCDate" id="MillTCDate"
+                                       ng-model="EditedMaterialSubSeries.MillDetail.TCDate" />
+                            </div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="MillReportDescription" class="control-label vertical-middle-align">Mill Report Description</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedMaterialSubSeries.MillDetail.Description" name="MillReportDescription"
+                                       id="MillReportDescription" placeholder="Mill Report Description">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Mill Details Ends-->
+                <!--Lab Details Starts-->
+                <div class="panel panel-info" id="LabPanel" ng-show="EditedMaterialSubSeries.ReportSelected == 'LabReports'">
+                    <div class="panel-heading">
+                        Lab Details
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="LabName" class="control-label vertical-middle-align">Lab Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedMaterialSubSeries.LabReport.LabName" name="LabName"
+                                       id="LabName" placeholder="LabName" />
+                            </div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="LabTCNumber" class="control-label vertical-middle-align">TCNumber</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedMaterialSubSeries.LabReport.TCNumber" name="LabTCNumber"
+                                       id="LabTCNumber" placeholder="Lab TC Number">
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="LabTCDate" class="control-label vertical-middle-align">Lab TC Date</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" class="form-control" name="LabTCDate" id="LabTCDate" 
+                                       ng-model="EditedMaterialSubSeries.LabReport.TCDate" />
+                            </div>
+                        </div>
+
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
+                                <label for="LabReportDescription" class="control-label vertical-middle-align">Lab Report Description</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedMaterialSubSeries.LabReport.Description" name="LabReportDescription"
+                                       id="LabReportDescription" placeholder="Lab Report Description">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--Lab Details Ends-->
+
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-4">
+                            <label class="control-label vertical-middle-align">Tests</label>
+                        </div>
+                        <div class="form-group">
+                            <div ng-dropdown-multiselect="" options="EditedMaterialSubSeries.Tests"
+                                 selected-model="EditedMaterialSubSeries.SelectedTests" checkboxes="true" extra-settings="ngDropdownMultiselectSettings"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-4">
+                            <label class="control-label vertical-middle-align">Mill Or Lab Report Current Files</label>
+                        </div>
+                        <div class="form-group">
+                            {{EditedMaterialSubSeries.MaterialRegisterFileDetails[0].FileName}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-4">
+                            <label class="control-label vertical-middle-align">Mill Or Lab Report Files</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control" ng-file-select="prepareFiles($files)" name="FileUpload" id="FileUpload" placeholder="FileUpload" />                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-4">
+                            <label for="Status" class="control-label vertical-middle-align">Status</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="radio" ng-model="EditedMaterialSubSeries.Status" name="Status"
+                                   id="StatusSubAccepted" value="Accepted" /> <label for="StatusSubAccepted">Accepted</label>
+                            <input type="radio" ng-model="EditedMaterialSubSeries.Status" name="Status"
+                                   id="StatusSubRejected" value="Rejected" /> <label for="StatusSubRejected">Rejected</label>
+                            <input type="radio" ng-model="EditedMaterialSubSeries.Status" name="Status"
+                                   id="StatusSubRetest" value="Retest" /><label for="StatusSubRetest">Retest</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="UpdateSubSeries()">Update SubSeries</button>
+        </div>
+    </div>
+</div>

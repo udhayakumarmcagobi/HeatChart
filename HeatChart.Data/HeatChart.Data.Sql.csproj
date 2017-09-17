@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A1477877-3DF2-4373-AE6C-A83F432F858A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HeatChart.Data.Sql</RootNamespace>
+    <AssemblyName>HeatChart.Data.Sql</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configurations\Domain\RawMaterialFormConfiguration.cs" />
+    <Compile Include="Configurations\Domain\DimensionConfiguration.cs" />
+    <Compile Include="Configurations\Domain\StatusConfiguration.cs" />
+    <Compile Include="Configurations\Domain\UserRoleConfiguration.cs" />
+    <Compile Include="Configurations\Domain\ThirdPartyInspectionConfiguration.cs" />
+    <Compile Include="Configurations\Domain\TestConfiguration.cs" />
+    <Compile Include="Configurations\Domain\SpecificationsConfiguration.cs" />
+    <Compile Include="Configurations\Domain\RoleConfiguration.cs" />
+    <Compile Include="Configurations\Domain\SupplierConfiguration.cs" />
+    <Compile Include="Configurations\Domain\CustomerConfiguration.cs" />
+    <Compile Include="Configurations\EntityBaseConfiguration.cs" />
+    <Compile Include="Configurations\HeatChartMaterialHeaderRelationshipConfiguration.cs" />
+    <Compile Include="Configurations\MaterialRegisterFileDetailConfiguration.cs" />
+    <Compile Include="Configurations\MaterialRegisterSubseriesTestRelationshipConfiguration.cs" />
+    <Compile Include="Configurations\MillDetailConfiguration.cs" />
+    <Compile Include="Configurations\LabReportConfiguration.cs" />
+    <Compile Include="Configurations\MaterialRegisterHeaderConfiguration.cs" />
+    <Compile Include="Configurations\MaterialRegisterSubseriesConfiguration.cs" />
+    <Compile Include="Configurations\HeatChartHeaderConfiguration.cs" />
+    <Compile Include="Configurations\HeatChartDetailsConfiguration.cs" />
+    <Compile Include="Configurations\UserConfiguration.cs" />
+    <Compile Include="HeatChartContext.cs" />
+    <Compile Include="Migrations\201708110650599_Init.cs" />
+    <Compile Include="Migrations\201708110650599_Init.Designer.cs">
+      <DependentUpon>201708110650599_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HeatChart.Entities\HeatChart.Entities.Sql.csproj">
+      <Project>{d2c69ae5-8c6c-4c10-b726-8e5498e96177}</Project>
+      <Name>HeatChart.Entities.Sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HeatChart.MockData.Sql\HeatChart.MockData.Sql.csproj">
+      <Project>{a08d02b4-13f0-4de1-ae5f-0a6d9d628679}</Project>
+      <Name>HeatChart.MockData.Sql</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708110650599_Init.resx">
+      <DependentUpon>201708110650599_Init.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

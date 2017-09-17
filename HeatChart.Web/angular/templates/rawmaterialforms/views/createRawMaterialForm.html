@@ -1,0 +1,35 @@
+﻿<hr />
+<div class="alert alert-info alert-dismissable">
+    <a class="panel-close close" data-dismiss="alert">×</a>
+    <i class="fa fa-user-plus fa-3x"></i> Create new rawMaterialForm. Make sure you fill all required fields.
+</div>
+<div class="row">
+    <form role="form" angular-validator name="addRawMaterialFormForm" angular-validator-submit="Create()">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="lab-important"  for="name">RawMaterialForm Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="newRawMaterialForm.Name" name="name" id="name" placeholder="RawMaterialForm Name" validate-on="blur"
+                           required required-message="'Name is required'">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="newRawMaterialForm.Description" name="description" id="description"
+                           placeholder="Description" validate-on="blur">
+                </div>
+            </div>
+            <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right">
+        </div>
+    </form>
+    <div class="col-sm-5 col-md-push-1">
+        <div class="col-md-12">
+            <div class="alert alert-danger">
+                <ul>
+                    <li ng-repeat="error in submission.errorMessages track by $index"> <strong>{{error}}</strong> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

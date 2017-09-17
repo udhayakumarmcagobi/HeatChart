@@ -1,0 +1,30 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Edit {{EditedSpecification.Name}}
+    </div>
+    <div class="panel-body">
+        <form role="form" angular-validator name="editSpecificationForm" angular-validator-submit="updateSpecification()">
+            <div class="form-group">
+                <label class="lab-important"  for="name">Specification Name</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" readonly ng-model="EditedSpecification.Name" name="name" id="name" placeholder="Specification Name" validate-on="blur"
+                           required required-message="'Name is required'">
+                </div>                
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="EditedSpecification.Description" name="description" id="description"
+                           placeholder="Description" validate-on="blur">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="updateSpecification()">Update</button>
+        </div>
+    </div>
+</div>
