@@ -20,7 +20,7 @@ namespace HeatChart.MockData.Sql
                 ThirdPartyInspectionID = 1,
                 CreatedOn = DateTime.Now,
                 CTNumber = "MP1212",
-                DimensionID = 1,
+                Dimension = string.Empty,
                 ModifiedBy = "udhay",
                 ModifiedOn = DateTime.Now,
                 PartiallyAcceptedRemarks = "Testing",

@@ -19,7 +19,7 @@ namespace HeatChart.Entities.Sql
         public int ThirdPartyInspectionID { get; set; } // Third Party Inspection ID
         public int RawMaterialFormID { get; set; } // Raw material ID
         public int SpecificationsID { get; set; } // Specification ID
-        public int DimensionID { get; set; } // Specification ID
+        public string  Dimension { get; set; } // Specification ID
         public string OtherInfo { get; set; } // Other Info Details
         public string CreatedBy { get; set; } // Created By
         public string ModifiedBy { get; set; } // Modified By
@@ -42,8 +42,6 @@ namespace HeatChart.Entities.Sql
         public virtual ThirdPartyInspection ThirdPartyInspections { get; set; } // ThirdPartyInspections
 
         public virtual Specifications Specification { get; set; } // Specification
-
-        public virtual Dimension Dimension { get; set; } // Dimension
 
         public virtual RawMaterialForm RawMaterialForms { get; set; } // Specification
 

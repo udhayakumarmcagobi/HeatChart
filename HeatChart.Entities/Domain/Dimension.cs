@@ -22,7 +22,5 @@ namespace HeatChart.Entities.Sql.Domain
         public DateTime CreatedOn { get; set; } // Created Date
         public DateTime ModifiedOn { get; set; } // Modified Date	
 
-        public virtual ICollection<HeatChartDetails> HeatChartDetails { get; set; }
-        public virtual ICollection<MaterialRegisterHeader> MaterialRegisterHeaders { get; set; }
     }
 }

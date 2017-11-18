@@ -30,6 +30,8 @@ namespace HeatHeatChart.ViewModels
         public DimensionVM DimensionSelected { get; set; } // Selected Dimension
         public List<DimensionVM> Dimensions { get; set; } // Dimensions
 
+        public string Dimension { get; set; }
+
         //They just need one Quantity field in the Material Register. No quantity tracking needed. Need behind this 
         //requirement is that they just want to know what the quantity they received against that 
         //Check Test No: for eg., they order 10 pipes, they want this entered in the material register. 

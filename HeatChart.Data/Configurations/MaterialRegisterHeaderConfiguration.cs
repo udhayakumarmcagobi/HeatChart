@@ -24,9 +24,6 @@ namespace HeatChart.Data.Sql.Configurations
             HasRequired(mrh => mrh.Specification).
                 WithMany(rel => rel.MaterialRegisterHeaders).WillCascadeOnDelete(false);
 
-            HasRequired(mrh => mrh.Dimension).
-                WithMany(rel => rel.MaterialRegisterHeaders).WillCascadeOnDelete(false);
-
             HasRequired(mrh => mrh.ThirdPartyInspections).
                 WithMany(rel => rel.MaterialRegisterHeaders).WillCascadeOnDelete(false);
 

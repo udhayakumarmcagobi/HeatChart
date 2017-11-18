@@ -99,7 +99,7 @@ namespace HeatChart.Web.Infrastructure.Extensions
             materialRegisterHeader.SupplierID = materialRegisterHeaderNew.SupplierID;
             materialRegisterHeader.ThirdPartyInspectionID = materialRegisterHeaderNew.ThirdPartyInspectionID;
             materialRegisterHeader.SpecificationsID = materialRegisterHeaderNew.SpecificationsID;
-            materialRegisterHeader.DimensionID = materialRegisterHeaderNew.DimensionID;
+            materialRegisterHeader.Dimension = materialRegisterHeaderNew.Dimension;
             materialRegisterHeader.RawMaterialFormID = materialRegisterHeaderNew.RawMaterialFormID;
 
             //materialRegisterHeader.MaterialRegisterSubSeriess = materialRegisterHeaderNew.MaterialRegisterSubSeriess;
@@ -196,7 +196,7 @@ namespace HeatChart.Web.Infrastructure.Extensions
             heatChartDetails.PartNumber = heatChartDetailsVM.PartNumber;
             heatChartDetails.SheetNo = heatChartDetailsVM.SheetNo;
             heatChartDetails.SpecificationsID = heatChartDetailsVM.SpecificationSelected.ID;
-            heatChartDetails.DimensionID = heatChartDetailsVM.DimensionSelected.ID;
+            heatChartDetails.Dimension = heatChartDetailsVM.Dimension;
         }
 
         #endregion

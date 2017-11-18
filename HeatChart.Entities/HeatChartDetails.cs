@@ -17,15 +17,13 @@ namespace HeatChart.Entities.Sql
         public string PartNumber { get; set; } // Part numbers
         public string SheetNo { get; set; } // Sheet No
         public int SpecificationsID { get; set; }
-        public int DimensionID { get; set; }
+        public string Dimension { get; set; }
 
         public bool IsDeleted { get; set; }
 
         public virtual HeatChartHeader HeatChartHeader { get; set; } // Material Header relationship
 
         public virtual Specifications Specification { get; set; } // Specification
-
-        public virtual Dimension Dimension { get; set; } // Dimension
 
         public virtual HeatChartMaterialHeaderRelationship HeathChartMaterialHeaderRelationships { get; set; }
     }

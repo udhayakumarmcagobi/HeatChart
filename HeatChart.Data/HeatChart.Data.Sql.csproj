@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201708110650599_Init.Designer.cs">
       <DependentUpon>201708110650599_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711181451321_NewChanges_Dimension_11182017.cs" />
+    <Compile Include="Migrations\201711181451321_NewChanges_Dimension_11182017.Designer.cs">
+      <DependentUpon>201711181451321_NewChanges_Dimension_11182017.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -103,6 +107,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708110650599_Init.resx">
       <DependentUpon>201708110650599_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711181451321_NewChanges_Dimension_11182017.resx">
+      <DependentUpon>201711181451321_NewChanges_Dimension_11182017.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

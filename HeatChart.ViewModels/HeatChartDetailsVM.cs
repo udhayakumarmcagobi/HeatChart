@@ -18,6 +18,8 @@ namespace HeatHeatChart.ViewModels
         public DimensionVM DimensionSelected { get; set; } // Selected Dimension
         public List<DimensionVM> Dimensions { get; set; } // Dimensions
 
+        public string Dimension { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public List<MaterialRegisterHeaderVM> MaterialRegisterHeaders { get; set; }

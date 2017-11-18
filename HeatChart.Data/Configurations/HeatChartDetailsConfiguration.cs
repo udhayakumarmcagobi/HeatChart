@@ -17,9 +17,6 @@ namespace HeatChart.Data.Sql.Configurations
             HasRequired(hcd => hcd.Specification).
                     WithMany(rel => rel.HeatChartDetails).WillCascadeOnDelete(false);
 
-            HasRequired(hcd => hcd.Dimension).
-                    WithMany(rel => rel.HeatChartDetails).WillCascadeOnDelete(false);
-
             HasOptional(hcd => hcd.HeathChartMaterialHeaderRelationships)
                 .WithRequired(rel => rel.HeatChartDetails).WillCascadeOnDelete(false);
         }

@@ -125,13 +125,8 @@
                             <label for="Dimension" class="control-label vertical-middle-align lab-important">Dimension</label>
                         </div>
                         <div class="form-group">
-                            <div ng-custom-select="dimension as dimension.Name for dimension in EditedMaterialRegisterHeader.Dimensions | filter: { Name: $searchTerm }"
-                                 ng-model="EditedMaterialRegisterHeader.DimensionSelected">
-                                <div class="pull-left">
-                                    <strong>{{ dimension.Name }}</strong><br />
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
+                            <input type="text" class="form-control" ng-model="EditedMaterialRegisterHeader.Dimension"
+                                   name="Dimension" id="Dimension" placeholder="Dimension">
                         </div>
                     </div>
                 </div>

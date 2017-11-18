@@ -37,8 +37,7 @@ namespace ModelMapper.ViewModelToDomain
                 .ForMember(mr => mr.ThirdPartyInspections, map => map.Ignore())
                 .ForMember(mr => mr.SpecificationsID, map => map.MapFrom(m => m.SpecificationSelected.ID))
                 .ForMember(mr => mr.Specification, map => map.Ignore())
-                .ForMember(mr => mr.DimensionID, map => map.MapFrom(m => m.DimensionSelected.ID))
-                .ForMember(mr => mr.Dimension, map => map.Ignore())
+                .ForMember(mr => mr.Dimension, map => map.MapFrom(m => m.Dimension))
                 .ForMember(mr => mr.RawMaterialFormID, map => map.MapFrom(m => m.RawMaterialFormSelected.ID))
                 .ForMember(mr => mr.RawMaterialForms, map => map.Ignore())
                 .ForMember(mr => mr.StatusID, map => map.MapFrom(m => GetStatusID(m.Status)))
@@ -73,7 +72,7 @@ namespace ModelMapper.ViewModelToDomain
             CreateMap<HeatChartDetailsVM, HeatChartDetails>()
                 .ForMember(hc => hc.HeathChartMaterialHeaderRelationships, map => map.MapFrom(m => GetHeatChartMaterialHeaderRelationship(m.MaterialRegisterHeaderSelected, m.MaterialRegisterSubSeriesSelected)))
                 .ForMember(hc => hc.SpecificationsID, map => map.MapFrom(m => m.SpecificationSelected.ID))
-                .ForMember(hc => hc.DimensionID, map => map.MapFrom(m => m.DimensionSelected.ID));
+                .ForMember(hc => hc.Dimension, map => map.MapFrom(m => m.Dimension));
 
             CreateMap<MaterialRegisterFileDetailVM, MaterialRegisterFileDetail>();
 

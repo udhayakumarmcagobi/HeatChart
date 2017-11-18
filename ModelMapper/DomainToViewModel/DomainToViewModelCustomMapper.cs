@@ -37,7 +37,7 @@ namespace ModelMapper.DomainToViewModel
             materialRegisterHeaderVM.SupplierSelected = AutoMapper.Map<Supplier, SupplierVM>(materialRegisterHeader.Suppliers);
             materialRegisterHeaderVM.ThirdPartyInspectionSelected = AutoMapper.Map<ThirdPartyInspection, ThirdPartyInspectionVM>(materialRegisterHeader.ThirdPartyInspections);
             materialRegisterHeaderVM.SpecificationSelected = AutoMapper.Map<Specifications, SpecificationsVM>(materialRegisterHeader.Specification);
-            materialRegisterHeaderVM.DimensionSelected = AutoMapper.Map<Dimension, DimensionVM>(materialRegisterHeader.Dimension);
+            materialRegisterHeaderVM.Dimension = materialRegisterHeader.Dimension;
             materialRegisterHeaderVM.RawMaterialFormSelected = AutoMapper.Map<RawMaterialForm, RawMaterialFormVM>(materialRegisterHeader.RawMaterialForms);
 
             return materialRegisterHeaderVM;
@@ -113,7 +113,7 @@ namespace ModelMapper.DomainToViewModel
             var heatChartDetailVM = AutoMapper.Map<HeatChartDetails, HeatChartDetailsVM>(heatChartDetail);
 
             heatChartDetailVM.SpecificationSelected = AutoMapper.Map<Specifications, SpecificationsVM>(heatChartDetail.Specification);
-            heatChartDetailVM.DimensionSelected = AutoMapper.Map<Dimension, DimensionVM>(heatChartDetail.Dimension);
+            heatChartDetailVM.Dimension = heatChartDetail.Dimension;
 
             return heatChartDetailVM;
         }
