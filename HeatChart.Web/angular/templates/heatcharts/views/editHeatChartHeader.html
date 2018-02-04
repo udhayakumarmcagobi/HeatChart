@@ -20,13 +20,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-8">
-
-                </div>
-
-            </div>
-
-            <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group form-inline">
                         <div class="col-sm-6">
@@ -44,6 +37,14 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-4">
                     <div class="form-group form-inline">
                         <div class="col-sm-6">
                             <label for="CustomerPONumber" class="control-label vertical-middle-align lab-important">Customer PO Number</label>
@@ -51,6 +52,17 @@
                         <div class="form-group">
                             <input type="text" class="form-control" ng-model="EditedHeatChartHeader.CustomerPONumber"
                                    name="CustomerPONumber" id="CustomerPONumber" placeholder="Customer PO Number" required required-message="'Customer PO Number is required'">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group form-inline">
+                        <div class="col-sm-6">
+                            <label for="CustomerPODate" class="control-label vertical-middle-align">Customer PO Date</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control" name="CustomerPODate" id="CustomerPODate"
+                                   ng-model="EditedHeatChartHeader.CustomerPODate " />
                         </div>
                     </div>
                 </div>
@@ -139,7 +151,7 @@
                 <div class="col-sm-4">
                     <div class="form-group form-inline">
                         <div class="col-sm-6">
-                            <label for="Plant" class="control-label vertical-middle-align">Plant</label>
+                            <label for="Plant" class="control-label vertical-middle-align">Plant / Project</label>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" ng-model="EditedHeatChartHeader.Plant" name="Plant"
@@ -190,6 +202,7 @@
                                             <th>CT Number</th>
                                             <th>Sub Series Number</th>
                                             <th>Part Number</th>
+                                            <th>Description</th>
                                             <th>Sheet No</th>
                                             <th>HC Dimension</th>
                                             <th>HC Specification</th>
@@ -214,6 +227,7 @@
                                             <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.SubSeriesNumber}}</td>
 
                                             <td>{{heatChartDetail.PartNumber}}</td>
+                                            <td>{{heatChartDetail.PartNumberDescription}}</td>
                                             <td>{{heatChartDetail.SheetNo}}</td>
                                             <td>{{heatChartDetail.Dimension}}</td>
                                             <td>{{heatChartDetail.SpecificationSelected.Name}}</td>

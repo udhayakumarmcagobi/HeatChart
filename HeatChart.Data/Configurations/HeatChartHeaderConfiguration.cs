@@ -12,6 +12,7 @@ namespace HeatChart.Data.Sql.Configurations
             Property(hch => hch.DrawingRevision).IsRequired().HasMaxLength(50);
             Property(hch => hch.TagNumber).IsRequired().HasMaxLength(50);
             Property(hch => hch.CustomerPONumber).HasMaxLength(50);
+            Property(hch => hch.CustomerPODate).IsOptional();
             Property(hch => hch.CustomerPOEquipment).HasMaxLength(50);
             Property(hch => hch.OtherInfo).IsOptional();
             Property(hch => hch.NoOfEquipment).IsOptional();

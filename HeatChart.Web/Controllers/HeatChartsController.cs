@@ -364,6 +364,11 @@ namespace HeatChart.Web.Controllers
 
             var relationship = heatChartDetails.HeathChartMaterialHeaderRelationships;
 
+            if(relationship == null)
+            {
+                relationship = new HeatChartMaterialHeaderRelationship();
+            }
+
             relationship.MaterialRegisterHeaderID = heatChartDetailsVM.MaterialRegisterHeaderSelected.ID;
             relationship.MaterialRegisterSubSeriesID = heatChartDetailsVM.MaterialRegisterSubSeriesSelected.ID;
 

@@ -9,6 +9,8 @@ namespace HeatChart.Infrastructure.Common.Utilities
 {
     public class ConfigurationReader
     {
+        #region Other Configs
+
         public static string CTPregix
         {
             get
@@ -49,43 +51,11 @@ namespace HeatChart.Infrastructure.Common.Utilities
             }
         }
 
-        public static string AWSAccessKey
-        {
-            get
-            {
-                return (WebConfigurationManager.AppSettings["AWSAccessKey"]);
-            }
-        }
-
-        public static string AWSSecretKey
-        {
-            get
-            {
-                return (WebConfigurationManager.AppSettings["AWSSecretKey"]);
-            }
-        }
-
         public static string BucketName
         {
             get
             {
                 return (WebConfigurationManager.AppSettings["BucketName"]);
-            }
-        }
-
-        public static string AWSMaterialRegisterFolderName
-        {
-            get
-            {
-                return (WebConfigurationManager.AppSettings["AWSMaterialRegisterFolderName"]);
-            }
-        }
-
-        public static string AWSHeatChartFolderName
-        {
-            get
-            {
-                return (WebConfigurationManager.AppSettings["AWSHeatChartFolderName"]);
             }
         }
 
@@ -103,6 +73,119 @@ namespace HeatChart.Infrastructure.Common.Utilities
                 return Convert.ToBoolean(WebConfigurationManager.AppSettings["IsCheckTestNumberAutoCalculate"]);
             }
         }
+
+        public static bool IsSaveToDirectory
+        {
+            get
+            {
+                return Convert.ToBoolean(WebConfigurationManager.AppSettings["IsSaveToDirectory"]);
+            }
+        }
+
+        #endregion
+
+        #region AWS Configs
+
+        public static string AWSAccessKey
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["AWSAccessKey"]);
+            }
+        }
+
+        public static string AWSSecretKey
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["AWSSecretKey"]);
+            }
+        }
+        public static string AWSMaterialRegisterFolderName
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["AWSMaterialRegisterFolderName"]);
+            }
+        }
+
+        public static string AWSHeatChartFolderName
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["AWSHeatChartFolderName"]);
+            }
+        }
+        #endregion
+
+        #region Heat Chart Comapny Config
+
+
+        public static string CompanyName
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["CompanyName"]);
+            }
+        }
+
+        public static string CompanyAddressHeader
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["CompanyAddressHeader"]);
+            }
+        }
+
+        public static string CompanyAddress
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["CompanyAddress"]);
+            }
+        }
+
+        public static string CompanyTelephone
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["CompanyTelephone"]);
+            }
+        }
+
+        public static string CompanyEmail
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["CompanyEmail"]);
+            }
+        }
+
+        public static string CompanyWebsite
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["CompanyWebsite"]);
+            }
+        }
+
+        public static string CompanyCIN
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["CompanyCIN"]);
+            }
+        }
+
+        public static string SurveyorName
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["SurveyorName"]);
+            }
+        }
+        
+        #endregion
 
     }
 }

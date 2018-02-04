@@ -41,6 +41,7 @@ namespace ModelMapper.ViewModelToDataset
                 .ForMember(vm => vm.MaterialRegisterDimension, map => map.MapFrom(m => m.MaterialRegisterHeaderSelected.DimensionSelected.Name))
                 .ForMember(vm => vm.MaterialRegisterSpecification, map => map.MapFrom(m => m.MaterialRegisterHeaderSelected.SpecificationSelected.Name))
                 .ForMember(vm => vm.PartNumber, map => map.MapFrom(m => m.PartNumber))
+                .ForMember(vm => vm.PartNumberDescription, map => map.MapFrom(m => m.PartNumberDescription))
                 .ForMember(vm => vm.SheetNo, map => map.MapFrom(m => m.SheetNo))
                 ;
         }

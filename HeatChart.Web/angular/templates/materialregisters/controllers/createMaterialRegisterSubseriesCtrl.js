@@ -41,7 +41,6 @@
                 LoadMaterialRegisterHeaderFailed);
 
         function LoadMaterialRegisterSubseriesSucceded(result) {
-            $scope.newMaterialSubSeries.ReportSelected = "MillDetails";
             $scope.newMaterialSubSeries = result.data;
             $scope.newMaterialSubSeries.SelectedTests = [];
             $scope.newMaterialSubSeries.MaterialRegisterFileDetails = [];

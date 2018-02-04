@@ -17,7 +17,7 @@ namespace HeatChart.Web.Core.Report
 {
     public class ReportGenerator
     {
-        public static string Report = "HeatChart.Web.angular.templates.heatcharts.report.HeatChartReport.rdlc";
+        public static string NewReport = "HeatChart.Web.angular.templates.heatcharts.report.HeatChartReport.rdlc";
 
         public static Task<Stream> GeneratePDF(List<HeatChartHeaderDatasetVM> heatChartHeaderDatasetVMs, List<HeatChartDetailsDatasetVM> heatChartDetailsDatasetVMs, string filePath)
         {
@@ -25,11 +25,13 @@ namespace HeatChart.Web.Core.Report
             {
                 try
                 {
-                    string binPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
+                   // string binPath = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin");
+
+                    string binPath = "C:\\inetpub\\wwwroot\\HeatChart\\bin";
 
                     var assembly = Assembly.Load(System.IO.File.ReadAllBytes(binPath + "\\HeatChart.Web.dll"));
 
-                    using (Stream stream = assembly.GetManifestResourceStream(Report))
+                    using (Stream stream = assembly.GetManifestResourceStream(NewReport))
                     {
                         var viewer = new ReportViewer();
                         viewer.LocalReport.EnableExternalImages = true;

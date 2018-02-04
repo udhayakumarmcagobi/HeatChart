@@ -53,35 +53,67 @@ namespace HeatChart.Web.Controllers
             string fileName = string.Empty;
 
             try
-            { 
+            {
 
-            var heatChartHeader = _heatChartHeaderRepository.GetSingleByHeatChartHeaderID(heatChartID);
+                var heatChartHeader = _heatChartHeaderRepository.GetSingleByHeatChartHeaderID(heatChartID);
 
-            var heatChartHeaders = new List<HeatChartHeader>();
-            heatChartHeaders.Add(heatChartHeader);
+                var heatChartHeaderVM = DomainToViewModelCustomMapper.MapHeatChartHeader(heatChartHeader);
 
-            var heatChartHeaderVMs = DomainToViewModelCustomMapper.MapHeatChartHeaders(heatChartHeaders);
+                fileName = string.Format("{0}_{1}", heatChartHeader.HeatChartNumber.Replace("/", "_"), "HeatChart.pdf");
 
-            var heatChartHeaderDatasetVMs = AutoMapper.Map<IEnumerable<HeatChartHeaderVM>, IEnumerable<HeatChartHeaderDatasetVM>>(heatChartHeaderVMs);
+                var resultStream =  PDFGenerateHelper.GeneratePDF(fileName, heatChartHeaderVM, string.Empty, ConfigurationReader.IsSaveToDirectory);
 
-            var heatChartDetailsDatasetVMs = 
-                AutoMapper.Map<IEnumerable<HeatChartDetailsVM>, IEnumerable<HeatChartDetailsDatasetVM>>(heatChartHeaderVMs.FirstOrDefault().HeatChartDetails);
-
-            fileName = string.Format("{0}_{1}", heatChartHeader.HeatChartNumber.Replace("/", "_"), "HeatChart.pdf");
-
-            var resultStream = await ReportGenerator.GeneratePDF(heatChartHeaderDatasetVMs.ToList(), heatChartDetailsDatasetVMs.ToList(), fileName);
-
-            S3UploadObject.WriteAnObject(resultStream, fileName, ConfigurationReader.AWSHeatChartFolderName);
+                S3UploadObject.WriteAnObject(resultStream, fileName, ConfigurationReader.AWSHeatChartFolderName);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogError(ex);
             }
 
             return CreateHttpResponse(request, () =>
             {
-                return S3UploadObject.DownloadAnObject(fileName, ConfigurationReader.AWSHeatChartFolderName);               
+                return S3UploadObject.DownloadAnObject(fileName, ConfigurationReader.AWSHeatChartFolderName);
+            });
+        }
+
+        [HttpGet]
+        [Route("generateheatchartRDLC")]
+        public async Task<HttpResponseMessage> GenerateHeatChartRDLC(HttpRequestMessage request, int heatChartID)
+        {
+            string filePath = string.Empty;
+            string fileName = string.Empty;
+
+            try
+            {
+
+                var heatChartHeader = _heatChartHeaderRepository.GetSingleByHeatChartHeaderID(heatChartID);
+
+                var heatChartHeaders = new List<HeatChartHeader>();
+                heatChartHeaders.Add(heatChartHeader);
+
+                var heatChartHeaderVMs = DomainToViewModelCustomMapper.MapHeatChartHeaders(heatChartHeaders);
+
+                var heatChartHeaderDatasetVMs = AutoMapper.Map<IEnumerable<HeatChartHeaderVM>, IEnumerable<HeatChartHeaderDatasetVM>>(heatChartHeaderVMs);
+
+                var heatChartDetailsDatasetVMs =
+                    AutoMapper.Map<IEnumerable<HeatChartDetailsVM>, IEnumerable<HeatChartDetailsDatasetVM>>(heatChartHeaderVMs.FirstOrDefault().HeatChartDetails);
+
+                fileName = string.Format("{0}_{1}", heatChartHeader.HeatChartNumber.Replace("/", "_"), "HeatChart.pdf");
+
+                var resultStream = await ReportGenerator.GeneratePDF(heatChartHeaderDatasetVMs.ToList(), heatChartDetailsDatasetVMs.ToList(), fileName);
+
+                S3UploadObject.WriteAnObject(resultStream, fileName, ConfigurationReader.AWSHeatChartFolderName);
+
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);
+            }
+
+            return CreateHttpResponse(request, () =>
+            {
+                return S3UploadObject.DownloadAnObject(fileName, ConfigurationReader.AWSHeatChartFolderName);
             });
         }
 

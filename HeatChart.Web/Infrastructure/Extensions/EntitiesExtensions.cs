@@ -177,6 +177,7 @@ namespace HeatChart.Web.Infrastructure.Extensions
             heatChartHeader.CustomerID = heatChartHeaderVM.CustomerSelected.ID;
             heatChartHeader.CustomerPOEquipment = heatChartHeaderVM.CustomerPOEquipment;
             heatChartHeader.CustomerPONumber = heatChartHeaderVM.CustomerPONumber;
+            heatChartHeader.CustomerPODate = heatChartHeaderVM.CustomerPODate;
 
             heatChartHeader.DrawingNumber = heatChartHeaderVM.DrawingNumber;
             heatChartHeader.DrawingRevision = heatChartHeaderVM.DrawingRevision;
@@ -194,6 +195,7 @@ namespace HeatChart.Web.Infrastructure.Extensions
         {
             heatChartDetails.HeatChartHeaderID = heatChartDetailsVM.HeatChartHeaderID;
             heatChartDetails.PartNumber = heatChartDetailsVM.PartNumber;
+            heatChartDetails.PartNumberDescription = heatChartDetailsVM.PartNumberDescription;
             heatChartDetails.SheetNo = heatChartDetailsVM.SheetNo;
             heatChartDetails.SpecificationsID = heatChartDetailsVM.SpecificationSelected.ID;
             heatChartDetails.Dimension = heatChartDetailsVM.Dimension;

@@ -9,6 +9,7 @@ namespace HeatChart.ViewModels.DatasetVM
     public class HeatChartDetailsDatasetVM
     {
         public string PartNumber { get; set; }
+        public string PartNumberDescription { get; set; }
         public string SheetNo { get; set; }
         public string CTNumber { get; set; }
         public string HeatChartDimension { get; set; }

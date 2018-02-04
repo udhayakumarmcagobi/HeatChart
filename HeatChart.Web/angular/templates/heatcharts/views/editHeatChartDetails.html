@@ -21,6 +21,15 @@
                         </div>
                         <div class="form-group form-inline">
                             <div class="col-sm-4">
+                                <label for="PartNumberDescription" class="control-label vertical-middle-align">Part Number Description</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="EditedHeatChartDetails.PartNumberDescription" name="PartNumberDescription"
+                                       id="PartNumberDescription" placeholder="Part Number Description" />
+                            </div>
+                        </div>
+                        <div class="form-group form-inline">
+                            <div class="col-sm-4">
                                 <label for="SheetNo" class="control-label vertical-middle-align">Sheet No</label>
                             </div>
                             <div class="form-group">
@@ -162,7 +171,7 @@
                                     <label for="MaterialSubSeriesMillTCDate" class="control-label vertical-middle-align">Mill TC Date</label>
                                 </div>
                                 <div class="form-group">
-                                    <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.MillDetail.TCDate | date:'mediumDate'}}</span>   
+                                    <span class="form-control">{{EditedHeatChartDetails.MaterialRegisterSubSeriesSelected.MillDetail.TCDate | date:'mediumDate'}}</span>
                                 </div>
                             </div>
                         </div>
@@ -205,6 +214,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </form>
     </div>
     <div class="panel-footer clearfix">

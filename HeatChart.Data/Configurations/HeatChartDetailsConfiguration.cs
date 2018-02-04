@@ -7,7 +7,8 @@ namespace HeatChart.Data.Sql.Configurations
         public HeatChartDetailsConfiguration()
         {
             Property(hcd => hcd.PartNumber).IsRequired().HasMaxLength(100);
-            Property(hcd => hcd.SheetNo).IsRequired().HasMaxLength(50);            
+            Property(hcd => hcd.SheetNo).IsRequired().HasMaxLength(50);
+            Property(hcd => hcd.PartNumberDescription).IsOptional().HasMaxLength(500);
 
             Property(hcd => hcd.IsDeleted).IsOptional();
 

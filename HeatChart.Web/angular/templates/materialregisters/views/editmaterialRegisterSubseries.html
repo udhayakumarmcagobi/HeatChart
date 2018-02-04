@@ -17,22 +17,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group form-inline">
-                        <div class="col-sm-4">
-                            <label for="LabOrMillReports" class="control-label vertical-middle-align">Mill or Lab Details</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="radio" ng-model="EditedMaterialSubSeries.ReportSelected" name="LabOrMillReports"
-                                   id="MillDetails" value="MillDetails" /> <label for="MillDetails">Mill Details</label>
-                            <input type="radio" ng-model="EditedMaterialSubSeries.ReportSelected" name="LabOrMillReports"
-                                   id="LabReports" value="LabReports" /> <label for="LabReports">Lab Details</label>
-                        </div>
-                    </div>
-                </div>
 
                 <!--Mill Details Starts-->
-                <div class="panel panel-info" id="MillPanel" ng-show="EditedMaterialSubSeries.ReportSelected == 'MillDetails'">
+                <div class="panel panel-info" id="MillPanel">
                     <div class="panel-heading">
                         Mill Details
                     </div>
@@ -96,7 +83,7 @@
                 </div>
                 <!--Mill Details Ends-->
                 <!--Lab Details Starts-->
-                <div class="panel panel-info" id="LabPanel" ng-show="EditedMaterialSubSeries.ReportSelected == 'LabReports'">
+                <div class="panel panel-info" id="LabPanel">
                     <div class="panel-heading">
                         Lab Details
                     </div>

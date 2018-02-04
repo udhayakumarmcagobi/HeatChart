@@ -15,6 +15,7 @@ namespace HeatChart.Entities.Sql
         public int ID { get; set; } // Auto generated ID
         public int HeatChartHeaderID { get; set; } // Heat Chart Header ID
         public string PartNumber { get; set; } // Part numbers
+        public string PartNumberDescription { get; set; } // Part number Description
         public string SheetNo { get; set; } // Sheet No
         public int SpecificationsID { get; set; }
         public string Dimension { get; set; }

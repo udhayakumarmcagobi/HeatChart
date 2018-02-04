@@ -20,6 +20,7 @@ namespace HeatHeatChart.ViewModels
         public string DrawingNumber { get; set; } // Drawing number
         public string DrawingRevision { get; set; } // Drawing revision
         public string CustomerPONumber { get; set; } // Customer PO Number
+        public DateTime? CustomerPODate { get; set; } // Customer Purchase Order Date 
         public string CustomerPOEquipment { get; set; } // Customer PO Equipment
         public string TagNumber { get; set; } // Tag Number
         public string OtherInfo { get; set; } // Other Info Details

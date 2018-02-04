@@ -50,10 +50,12 @@
         }
         else {
             $scope.EditedHeatChartHeader = $scope.CurrentHeatChartHeader;
+            $scope.EditedHeatChartHeader.CustomerPODate = new Date($scope.EditedHeatChartHeader.CustomerPODate);
         }
 
         function LoadHeatChartHeaderSucceded(result) {
             $scope.EditedHeatChartHeader = result.data;
+            $scope.EditedHeatChartHeader.CustomerPODate = new Date($scope.EditedHeatChartHeader.CustomerPODate);
         }
 
         function LoadHeatChartHeaderFailed(response) {
