@@ -120,6 +120,13 @@ namespace HeatChart.Infrastructure.Common.Utilities
 
         #region Heat Chart Comapny Config
 
+        public static string CompanyImageName
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["CompanyImageName"]);
+            }
+        }
 
         public static string CompanyName
         {

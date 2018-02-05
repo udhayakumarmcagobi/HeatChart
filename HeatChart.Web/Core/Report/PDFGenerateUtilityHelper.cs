@@ -199,8 +199,9 @@ namespace HeatChart.Web.Core.Report
             {
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_CENTER,
-                VerticalAlignment = Element.ALIGN_TOP,
-                Border = Rectangle.NO_BORDER,
+                VerticalAlignment = Element.ALIGN_TOP, 
+                PaddingBottom  = 5,
+                PaddingTop = 5           
             });
 
             tableLayout.AddCell(new PdfPCell(headerImageTable)

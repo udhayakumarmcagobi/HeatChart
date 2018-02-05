@@ -95,7 +95,7 @@ namespace HeatChart.Web.Core.Report
 
             AddCellToFooterLeft(footerTable, ConfigurationReader.CompanyName, 4);
 
-            string contactDetails = string.Format("{0} : {1}{2} Tel : {3} Email : {4} Website : {5} UIN : {6}",
+            string contactDetails = string.Format("{0} : {1}{2} Tel : {3}; Email : {4}; Website : {5}; UIN : {6}",
                 ConfigurationReader.CompanyAddressHeader, ConfigurationReader.CompanyAddress, Environment.NewLine,
                 ConfigurationReader.CompanyTelephone, ConfigurationReader.CompanyEmail, ConfigurationReader.CompanyWebsite,
                 ConfigurationReader.CompanyCIN);
@@ -138,7 +138,7 @@ namespace HeatChart.Web.Core.Report
 
         private static void GetHeatChartHeadingPDFTable(PdfPTable tableLayout)
         {
-            string headerImagePath = HttpContext.Current.Server.MapPath("~/content/images/" + "metalplants_Header.png");
+            string headerImagePath = HttpContext.Current.Server.MapPath("~/content/images/" + ConfigurationReader.CompanyImageName);
 
             iTextSharp.text.Image headerImage = iTextSharp.text.Image.GetInstance(headerImagePath);
 

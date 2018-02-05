@@ -24,7 +24,7 @@ namespace HeatChart.Web.Core.Report
             MemoryStream memoryStream = new MemoryStream();
             //file name to be created   
             pdfFileName = string.Format("{0}{1}", pdfFileName, ".pdf");
-            Document doc = new Document(PageSize.A4.Rotate(), 10f, 10f, 240f, 20f);
+            Document doc = new Document(PageSize.A4.Rotate(), 10f, 10f, 255f, 20f);
             //Create PDF Table  
 
             PdfPTable tableLayout = new PdfPTable(12);
