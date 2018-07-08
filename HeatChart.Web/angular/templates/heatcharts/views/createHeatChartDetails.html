@@ -24,8 +24,9 @@
                                 <label for="PartNumberDescription" class="control-label vertical-middle-align">Part Number Description</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" ng-model="newHeatChartDetails.PartNumberDescription" name="PartNumberDescription"
-                                       id="PartNumberDescription" placeholder="Part Number Description" />
+                                <textarea style="width:100px;" rows="3" class="form-control" ng-model="newHeatChartDetails.PartNumberDescription"
+                                          name="PartNumberDescription" id="PartNumberDescription"
+                                          placeholder="Part Number Description" validate-on="blur" />
                             </div>
                         </div>
                         <div class="form-group form-inline">
@@ -75,7 +76,7 @@
                             </div>
                             <div class="form-group">
                                 <div ng-custom-select="mr as mr.CTNumber for mr in newHeatChartDetails.MaterialRegisterHeaders | filter: { CTNumber: $searchTerm }"
-                                     ng-model="newHeatChartDetails.MaterialRegisterHeaderSelected" custom-select-options="materialRegisterHeaderSelectionChange" >
+                                     ng-model="newHeatChartDetails.MaterialRegisterHeaderSelected" custom-select-options="materialRegisterHeaderSelectionChange">
                                     <div class=" pull-left">
                                         <strong>{{ mr.CTNumber }}</strong><br />
                                     </div>
@@ -116,7 +117,7 @@
                                 <span class="form-control">{{newHeatChartDetails.MaterialRegisterHeaderSelected.SpecificationSelected.Name}}</span>
                             </div>
                         </div>
-                        <div class="form-group form-inline" ng-show="(newHeatChartDetails.MaterialRegisterHeaderSelected != undefined && 
+                        <div class="form-group form-inline" ng-show="(newHeatChartDetails.MaterialRegisterHeaderSelected != undefined &&
                                                                       newHeatChartDetails.MaterialRegisterHeaderSelected.Status != '' )">
                             <div class="col-sm-4">
                                 <label for="MaterialRegisterStatus" class="control-label vertical-middle-align">MR Status</label>
@@ -169,7 +170,7 @@
                                     <label for="MaterialSubSeriesMillTCDate" class="control-label vertical-middle-align">Mill TC Date</label>
                                 </div>
                                 <div class="form-group">
-                                    <span class="form-control">{{newHeatChartDetails.MaterialRegisterSubSeriesSelected.MillDetail.TCDate | date:'mediumDate'}}</span>                                
+                                    <span class="form-control">{{newHeatChartDetails.MaterialRegisterSubSeriesSelected.MillDetail.TCDate | date:'mediumDate'}}</span>
                                 </div>
                             </div>
                         </div>
@@ -212,7 +213,7 @@
                         </div>
                     </div>
                 </div>
-                </div>
+            </div>
         </form>
     </div>
     <div class="panel-footer clearfix">

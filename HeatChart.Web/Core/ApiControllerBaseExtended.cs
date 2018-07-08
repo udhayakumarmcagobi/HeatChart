@@ -65,12 +65,12 @@ namespace HeatChart.Web.Core
             catch (DbUpdateException ex)
             {
                 LogError(ex);
-                response = request.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
+                response = request.CreateResponse(HttpStatusCode.BadRequest, ConfigurationReader.ErrorMessage);
             }
             catch (Exception ex)
             {
                 LogError(ex);
-                response = request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                response = request.CreateResponse(HttpStatusCode.InternalServerError, ConfigurationReader.ErrorMessage);
             }
             return response;
         }
@@ -87,12 +87,12 @@ namespace HeatChart.Web.Core
             catch (DbUpdateException ex)
             {
                 LogError(ex);
-                response = request.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
+                response = request.CreateResponse(HttpStatusCode.BadRequest, ConfigurationReader.ErrorMessage);
             }
             catch (Exception ex)
             {
                 LogError(ex);
-                response = request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                response = request.CreateResponse(HttpStatusCode.InternalServerError, ConfigurationReader.ErrorMessage);
             }
             return response;
         }

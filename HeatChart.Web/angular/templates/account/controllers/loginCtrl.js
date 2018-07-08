@@ -27,6 +27,7 @@
                 else {
                     $location.path("/");
                 }
+                $location.path("/");
             }
             else {
                 notificationService.displayError("Login failed. Try again");

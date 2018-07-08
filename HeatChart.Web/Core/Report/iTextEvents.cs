@@ -29,7 +29,6 @@ namespace HeatChart.Web.Core.Report
         // This keeps track of the creation time
         DateTime PrintTime = DateTime.Now;
 
-
         #region Fields
         private string _header;
         #endregion
@@ -42,7 +41,6 @@ namespace HeatChart.Web.Core.Report
         }
         #endregion
 
-
         public override void OnOpenDocument(PdfWriter writer, Document document)
         {
             try
@@ -50,7 +48,7 @@ namespace HeatChart.Web.Core.Report
                 PrintTime = DateTime.Now;
                 bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
                 cb = writer.DirectContent;
-                headerTemplate = cb.CreateTemplate(100, 100);
+                headerTemplate = cb.CreateTemplate(100, 50);
                 footerTemplate = cb.CreateTemplate(100, 100);
             }
             catch (DocumentException de)
@@ -74,36 +72,28 @@ namespace HeatChart.Web.Core.Report
 
             PdfPTable headerTable = new PdfPTable(12);
             headerTable.HorizontalAlignment = Element.ALIGN_CENTER;
+            headerTable.DefaultCell.Border = Rectangle.NO_BORDER;
 
-            headerTable.TotalWidth = document.PageSize.Width - 184f;
-            headerTable.WidthPercentage = 75;
+            headerTable.TotalWidth = document.PageSize.Width - 60f;
+            headerTable.WidthPercentage = 90;
             GetHeaderPDFTable(headerTable, _heatChartHeaderVM);
 
             //call WriteSelectedRows of PdfTable. This writes rows from PdfWriter in PdfTable
             //first param is start row. -1 indicates there is no end row and all the rows to be included to write
             //Third and fourth param is x and y position to start writing
-            headerTable.WriteSelectedRows(0, -1, 92, document.PageSize.Height -30, writer.DirectContent);            
+            headerTable.WriteSelectedRows(0, -1, 20, document.PageSize.Height -10, writer.DirectContent);            
 
             PdfPTable footerTable = new PdfPTable(12);
+            footerTable.DefaultCell.Border = Rectangle.NO_BORDER;
             footerTable.HorizontalAlignment = Element.ALIGN_CENTER;
 
-            footerTable.TotalWidth = document.PageSize.Width - 184f;
-            footerTable.WidthPercentage = 75;
+            footerTable.TotalWidth = document.PageSize.Width - 59f;
+            footerTable.WidthPercentage = 90;
 
-            AddCellToFooterLeft(footerTable, "", 12);
-            AddCellToFooterLeft(footerTable, "", 12);
 
-            AddCellToFooterLeft(footerTable, ConfigurationReader.CompanyName, 4);
+            GetHeatChartFooterPDFTable(footerTable);
 
-            string contactDetails = string.Format("{0} : {1}{2} Tel : {3}; Email : {4}; Website : {5}; UIN : {6}",
-                ConfigurationReader.CompanyAddressHeader, ConfigurationReader.CompanyAddress, Environment.NewLine,
-                ConfigurationReader.CompanyTelephone, ConfigurationReader.CompanyEmail, ConfigurationReader.CompanyWebsite,
-                ConfigurationReader.CompanyCIN);
-
-            AddCellToFooterCenter(footerTable, contactDetails, 6);
-            AddCellToFooteRight(footerTable, ConfigurationReader.SurveyorName, 4);
-
-            footerTable.WriteSelectedRows(0, -1, 92, document.BottomMargin + 50, writer.DirectContent);
+            footerTable.WriteSelectedRows(0, -1, 20, document.BottomMargin + 10, writer.DirectContent);
         }
 
         public override void OnCloseDocument(PdfWriter writer, Document document)
@@ -128,80 +118,33 @@ namespace HeatChart.Web.Core.Report
         private void GetHeaderPDFTable(PdfPTable headerTable, HeatChartHeaderVM _heatChartHeaderVM)
         {
             GetHeatChartHeadingPDFTable(headerTable);
-
-            GetHeatChartHeader(headerTable, _heatChartHeaderVM);
-
             GetHeatChartDetailHeadingPDFTable(headerTable, _heatChartHeaderVM);
-
-            GetHeatchartDetailHeader(headerTable);
         }
 
-        private static void GetHeatChartHeadingPDFTable(PdfPTable tableLayout)
+        private void GetHeatChartDetailHeadingPDFTable(PdfPTable tableLayout, HeatChartHeaderVM heatChartHeaderVM)
+        {
+            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, string.Format("{0}:{1}", "Heat Chart No", heatChartHeaderVM.HeatChartNumber), 12);
+        }
+
+        private void GetHeatChartHeadingPDFTable(PdfPTable tableLayout)
         {
             string headerImagePath = HttpContext.Current.Server.MapPath("~/content/images/" + ConfigurationReader.CompanyImageName);
 
             iTextSharp.text.Image headerImage = iTextSharp.text.Image.GetInstance(headerImagePath);
 
-            PDFGenerateUtilityHelper.AddImageIntoCell(tableLayout, headerImage, 12);
+            PDFGenerateUtilityHelper.AddHeaderImageIntoCell(tableLayout, headerImage, 12);
         }
 
-        private static void GetHeatChartDetailHeadingPDFTable(PdfPTable tableLayout, HeatChartHeaderVM heatChartHeaderVM)
+        private void GetHeatChartFooterPDFTable(PdfPTable tableLayout)
         {
-            List<string> sheetNoList = new List<string>();
+            string headerImagePath = HttpContext.Current.Server.MapPath("~/content/images/" + ConfigurationReader.CompanyAddressImageName);
 
-            string sheetNos = string.Empty;
+            iTextSharp.text.Image headerImage = iTextSharp.text.Image.GetInstance(headerImagePath);
 
-            if (heatChartHeaderVM.HeatChartDetails != null)
-            {
-                sheetNoList = heatChartHeaderVM.HeatChartDetails.Select(x => x.SheetNo).Distinct().ToList();
-
-                sheetNos = string.Join(", ", sheetNoList);
-            }
-
-            PDFGenerateUtilityHelper.AddCellToDetailHeading(tableLayout, "MATERIAL HEAT CHART", 10);
-            PDFGenerateUtilityHelper.AddCellToDetailHeadingSheet(tableLayout, string.Format("{0} : {1}","Sheet No", sheetNos), 2);
-        }
-
-        private static void GetHeatChartHeader(PdfPTable tableLayout, HeatChartHeaderVM heatChartHeaderVM)
-        {
-            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, string.Format("{0}{1}:{2}{3}", "Customer", "  ", "  ", heatChartHeaderVM.CustomerSelected?.Name), 6);
-            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, 
-                string.Format("{0}{1}:{2}{3}", "Mfg By", "  ", "  ", ConfigurationReader.CompanyName), 6);
-
-            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, string.Format("{0}{1}:{2}{3}", "PO Number", "  ", "  ", heatChartHeaderVM.CustomerPONumber), 3);
-            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, string.Format("{0}{1}:{2}{3}", "PO Date", "  ", "  ",
-                               heatChartHeaderVM.CustomerPODate != null ? heatChartHeaderVM.CustomerPODate?.ToShortDateString() : string.Empty), 3);
-
-            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, string.Format("{0}{1}:{2}{3}", "Equipment Name", "  ", "  ", heatChartHeaderVM.CustomerPOEquipment), 6);
-
-            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, string.Format("{0}{1}:{2}{3}", "Plant / Project", "  ", "  ", heatChartHeaderVM.Plant), 6);
-            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, string.Format("{0}{1}:{2}{3}", "Drawing Number", "  ", "  ", heatChartHeaderVM.DrawingNumber), 4);
-            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, string.Format("{0}{1}:{2}{3}", "Drawing Revision", "  ", "  ", heatChartHeaderVM.DrawingRevision), 2);
-
-            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, string.Format("{0}{1}:{2}{3}", "Inspection By", "  ", "  ", heatChartHeaderVM.ThirdPartyInspectionSelected.Name), 6);
-            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, string.Format("{0}{1}:{2}{3}", "Tag Number", "  ", "  ", heatChartHeaderVM.TagNumber), 4);
-            PDFGenerateUtilityHelper.AddCellToBodyHeader(tableLayout, string.Format("{0}{1}:{2}{3}", "Quantity", "  ", "  ", heatChartHeaderVM.NoOfEquipment), 2);
-        }
-
-        public static void GetHeatchartDetailHeader(PdfPTable tableLayout)
-        {
-            //Add Header
-
-            PDFGenerateUtilityHelper.AddCellToDetailHeader(tableLayout, "Part No", 1);
-            PDFGenerateUtilityHelper.AddCellToDetailHeader(tableLayout, "Description", 2);
-
-            PDFGenerateUtilityHelper.AddCellToDetailHeaderSpecified(tableLayout, "Specified", 2);
-            PDFGenerateUtilityHelper.AddCellToDetailHeaderUtilized(tableLayout, "Utilized", 2);
-
-            PDFGenerateUtilityHelper.AddCellToDetailHeader(tableLayout, "CT No/HT No", 1);
-            PDFGenerateUtilityHelper.AddCellToDetailHeader(tableLayout, "TC No", 1);
-            PDFGenerateUtilityHelper.AddCellToDetailHeader(tableLayout, "TC Date", 1);
-            PDFGenerateUtilityHelper.AddCellToDetailHeader(tableLayout, "LAB/MFG", 1);
-            PDFGenerateUtilityHelper.AddCellToDetailHeader(tableLayout, "Doc Sr.No", 1);
+            PDFGenerateUtilityHelper.AddFooterImageIntoCell(tableLayout, headerImage, 12);
         }
 
         #endregion
-
 
         private static void AddCellToFooterLeft(PdfPTable tableLayout, string cellText, int colspan)
         {
@@ -211,17 +154,19 @@ namespace HeatChart.Web.Core.Report
                 HorizontalAlignment = Element.ALIGN_CENTER,
                 VerticalAlignment = Element.ALIGN_BOTTOM,
                 Padding = 10f,
+                Border = Rectangle.NO_BORDER,
                 BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
             });
         }
 
         private static void AddCellToFooterCenter(PdfPTable tableLayout, string cellText, int colspan)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 7, 1, iTextSharp.text.BaseColor.BLACK)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 8, 1, iTextSharp.text.BaseColor.BLACK)))
             {
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_CENTER,
                 Padding = 10f,
+                Border = Rectangle.NO_BORDER,
                 BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
             });
         }
@@ -234,6 +179,7 @@ namespace HeatChart.Web.Core.Report
                 HorizontalAlignment = Element.ALIGN_CENTER,
                 VerticalAlignment = Element.ALIGN_BOTTOM,
                 Padding = 10f,
+                Border = Rectangle.NO_BORDER,
                 BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
             });
         }

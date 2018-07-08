@@ -7,6 +7,8 @@
             <div class="col-sm-12">
                 <div class="panel panel-info" id="HeatChartSpecificPanel">
                     <div class="panel-heading">
+                        <input type="hidden" ng-model="EditedHeatChartDetails.ID" />
+                        <input type="hidden" ng-model="EditedHeatChartDetails.HeatChartHeaderID" />
                         Heat Chart Specific
                     </div>
                     <div class="panel-body">
@@ -24,10 +26,12 @@
                                 <label for="PartNumberDescription" class="control-label vertical-middle-align">Part Number Description</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" ng-model="EditedHeatChartDetails.PartNumberDescription" name="PartNumberDescription"
-                                       id="PartNumberDescription" placeholder="Part Number Description" />
+                                <textarea rows="3" class="form-control" ng-model="EditedHeatChartDetails.PartNumberDescription"
+                                          name="PartNumberDescription" id="PartNumberDescription"
+                                          placeholder="Part Number Description" validate-on="blur" />
                             </div>
                         </div>
+
                         <div class="form-group form-inline">
                             <div class="col-sm-4">
                                 <label for="SheetNo" class="control-label vertical-middle-align">Sheet No</label>

@@ -4,10 +4,10 @@
     app.controller('createMaterialRegisterHeaderCtrl', createMaterialRegisterHeaderCtrl);
 
     createMaterialRegisterHeaderCtrl.$inject = ['$scope', '$location', '$modal', '$rootScope', '$routeParams',
-                                            'apiService', 'notificationService', 'heatChartReportService', '$filter'];
+                                            'apiService', 'notificationService', 'heatChartReportService', '$filter', 'beforeUnload'];
 
     function createMaterialRegisterHeaderCtrl($scope, $location, $modal, $rootScope, $routeParams,
-                                            apiService, notificationService, heatChartReportService, $filter) {
+        apiService, notificationService, heatChartReportService, $filter, beforeUnload) {
         $scope.newMaterialRegisterHeader = {};
 
         $scope.Create = Create;
@@ -27,8 +27,19 @@
 
         $scope.dateOptions = {
             formatYear: 'yy',
-            startingDay: 1
+            startingDay: 1,
+            endDate: "today",
+            maxDate:"today"
         };
+
+        $scope.$on('onBeforeUnload', function (e, confirmation) {
+            confirmation.message = "All data willl be lost.";
+            e.preventDefault();
+        });
+
+        $scope.$on('onUnload', function (e) {
+            console.log('leaving page'); // Use 'Preserve Log' option in Console
+        });
 
         $scope.datepicker = {};
 
@@ -188,4 +199,5 @@
         };
 
     }
+
 })(angular.module('heatChart'));

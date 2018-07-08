@@ -28,7 +28,7 @@ namespace HeatChart.DataRepository.Sql.Infrastructure
 
             await Task.Run(() =>
             {
-                dbContext = new HeatChartContext();
+                dbContext = new HeatChartContext();                
             });
 
             return dbContext;

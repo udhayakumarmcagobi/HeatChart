@@ -2,13 +2,8 @@
 using HeatChart.Data.Sql.Configurations.Domain;
 using HeatChart.Entities.Sql;
 using HeatChart.Entities.Sql.Domain;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HeatChart.Data.Sql
 {
@@ -19,6 +14,8 @@ namespace HeatChart.Data.Sql
             : base("HeatChart")
         {
             Database.SetInitializer<HeatChartContext>(null);
+
+            Database.CommandTimeout = 600;
         }
 
         #region Entity Sets

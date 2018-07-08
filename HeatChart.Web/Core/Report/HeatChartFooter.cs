@@ -14,6 +14,7 @@ namespace HeatChart.Web.Core.Report
         {
 
             PdfPTable footerTbl = new PdfPTable(12);
+            footerTbl.DefaultCell.Border = Rectangle.NO_BORDER;
             footerTbl.TotalWidth = 800;
 
             footerTbl.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -37,6 +38,7 @@ namespace HeatChart.Web.Core.Report
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_LEFT,
                 //Padding = 5f,
+                Border = Rectangle.NO_BORDER,
                 BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
             });
         }
@@ -48,6 +50,7 @@ namespace HeatChart.Web.Core.Report
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_CENTER,
                 //Padding = 5f,
+                Border = Rectangle.NO_BORDER,
                 BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
             });
         }
@@ -59,6 +62,7 @@ namespace HeatChart.Web.Core.Report
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_RIGHT,
                 //Padding = 5f,
+                Border = Rectangle.NO_BORDER,
                 BackgroundColor = new iTextSharp.text.BaseColor(255, 255, 255)
             });
         }

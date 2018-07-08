@@ -79,17 +79,9 @@
     <Compile Include="Configurations\HeatChartDetailsConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="HeatChartContext.cs" />
-    <Compile Include="Migrations\201708110650599_Init.cs" />
-    <Compile Include="Migrations\201708110650599_Init.Designer.cs">
-      <DependentUpon>201708110650599_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711181451321_NewChanges_Dimension_11182017.cs" />
-    <Compile Include="Migrations\201711181451321_NewChanges_Dimension_11182017.Designer.cs">
-      <DependentUpon>201711181451321_NewChanges_Dimension_11182017.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801210756517_Update_01212018_Changes.cs" />
-    <Compile Include="Migrations\201801210756517_Update_01212018_Changes.Designer.cs">
-      <DependentUpon>201801210756517_Update_01212018_Changes.cs</DependentUpon>
+    <Compile Include="Migrations\201807011611208_Initial.cs" />
+    <Compile Include="Migrations\201807011611208_Initial.Designer.cs">
+      <DependentUpon>201807011611208_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,14 +101,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708110650599_Init.resx">
-      <DependentUpon>201708110650599_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711181451321_NewChanges_Dimension_11182017.resx">
-      <DependentUpon>201711181451321_NewChanges_Dimension_11182017.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801210756517_Update_01212018_Changes.resx">
-      <DependentUpon>201801210756517_Update_01212018_Changes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807011611208_Initial.resx">
+      <DependentUpon>201807011611208_Initial.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

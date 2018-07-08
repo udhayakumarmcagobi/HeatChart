@@ -4,10 +4,10 @@
     app.controller('createMaterialRegisterSubseriesCtrl', createMaterialRegisterSubseriesCtrl);
 
     createMaterialRegisterSubseriesCtrl.$inject = ['$scope', '$location', '$rootScope', '$modalInstance', '$timeout', '$routeParams',
-                                                    'apiService', 'notificationService', 'heatChartReportService'];
+                                                    'apiService', 'notificationService', 'heatChartReportService', 'dateHandlingService'];
 
     function createMaterialRegisterSubseriesCtrl($scope, $location, $rootScope, $modalInstance,
-        $timeout, $routeParams, apiService, notificationService, heatChartReportService) {
+        $timeout, $routeParams, apiService, notificationService, heatChartReportService, dateHandlingService) {
         $scope.openDatePicker = openDatePicker;
         $scope.cancelEdit = cancelEdit;
         $scope.AddSubSeries = AddSubSeries;
@@ -31,6 +31,9 @@
             scrollable: true,
             enableSearch: true
         };
+
+        $scope.MaxDate = dateHandlingService.getMaxDate();
+       
 
         var config = {};
 

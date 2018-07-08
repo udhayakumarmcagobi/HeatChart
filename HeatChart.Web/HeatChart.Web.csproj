@@ -26,6 +26,7 @@
     </NuGetPackageImportStamp>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -180,6 +181,8 @@
     <Content Include="angular\layout\sideBar.html" />
     <Content Include="angular\layout\topBar.html" />
     <Content Include="angular\rootCtrl.js" />
+    <Content Include="angular\services\dateHandlingService.js" />
+    <Content Include="angular\services\beforeUnload.js" />
     <Content Include="angular\services\heatChartReportService.js" />
     <Content Include="angular\services\apiService.js" />
     <Content Include="angular\services\membershipService.js" />
@@ -294,6 +297,7 @@
     <Content Include="content\css\toastr.css" />
     <Content Include="content\fonts\fontawesome-webfont.svg" />
     <Content Include="content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="content\images\metalplants_Footer.png" />
     <Content Include="content\images\metalplants_Header.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

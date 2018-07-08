@@ -45,9 +45,11 @@ namespace HeatChart.Web
                 "~/angular/modules/common.ui.js",
                 //Service Javascripts
                 "~/angular/services/apiService.js",
+                "~/angular/services/beforeUnload.js",
                 "~/angular/services/membershipService.js",
                 "~/angular/services/notificationService.js",
-                "~/angular/services/heatChartReportService.js",                
+                "~/angular/services/heatChartReportService.js",
+                "~/angular/services/dateHandlingService.js",
                 //Directives
                 "~/angular/directives/sideBar.directive.js",
                 "~/angular/directives/topBar.directive.js",

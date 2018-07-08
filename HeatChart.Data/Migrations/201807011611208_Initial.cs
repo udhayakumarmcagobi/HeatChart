@@ -3,7 +3,7 @@ namespace HeatChart.Data.Sql.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Init : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -37,6 +37,7 @@ namespace HeatChart.Data.Sql.Migrations
                         DrawingNumber = c.String(nullable: false, maxLength: 50),
                         DrawingRevision = c.String(nullable: false, maxLength: 50),
                         CustomerPONumber = c.String(maxLength: 50),
+                        CustomerPODate = c.DateTime(),
                         CustomerPOEquipment = c.String(maxLength: 50),
                         TagNumber = c.String(nullable: false, maxLength: 50),
                         ThirdPartyInspectionID = c.Int(nullable: false),
@@ -65,33 +66,33 @@ namespace HeatChart.Data.Sql.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         HeatChartHeaderID = c.Int(nullable: false),
                         PartNumber = c.String(nullable: false, maxLength: 100),
+                        PartNumberDescription = c.String(maxLength: 500),
                         SheetNo = c.String(nullable: false, maxLength: 50),
                         SpecificationsID = c.Int(nullable: false),
-                        DimensionID = c.Int(nullable: false),
+                        Dimension = c.String(),
                         IsDeleted = c.Boolean(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Dimension", t => t.DimensionID)
                 .ForeignKey("dbo.HeatChartHeader", t => t.HeatChartHeaderID)
                 .ForeignKey("dbo.Specifications", t => t.SpecificationsID)
                 .Index(t => t.HeatChartHeaderID)
-                .Index(t => t.SpecificationsID)
-                .Index(t => t.DimensionID);
+                .Index(t => t.SpecificationsID);
             
             CreateTable(
-                "dbo.Dimension",
+                "dbo.HeatChartMaterialHeaderRelationship",
                 c => new
                     {
-                        ID = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        Description = c.String(),
-                        IsDeleted = c.Boolean(),
-                        CreatedBy = c.String(nullable: false, maxLength: 50),
-                        ModifiedBy = c.String(nullable: false, maxLength: 50),
-                        CreatedOn = c.DateTime(nullable: false),
-                        ModifiedOn = c.DateTime(nullable: false),
+                        ID = c.Int(nullable: false),
+                        MaterialRegisterHeaderID = c.Int(nullable: false),
+                        MaterialRegisterSubSeriesID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.MaterialRegisterHeader", t => t.MaterialRegisterHeaderID)
+                .ForeignKey("dbo.MaterialRegisterSubSeries", t => t.MaterialRegisterSubSeriesID)
+                .ForeignKey("dbo.HeatChartDetails", t => t.ID)
+                .Index(t => t.ID)
+                .Index(t => t.MaterialRegisterHeaderID)
+                .Index(t => t.MaterialRegisterSubSeriesID);
             
             CreateTable(
                 "dbo.MaterialRegisterHeader",
@@ -105,7 +106,7 @@ namespace HeatChart.Data.Sql.Migrations
                         ThirdPartyInspectionID = c.Int(nullable: false),
                         RawMaterialFormID = c.Int(nullable: false),
                         SpecificationsID = c.Int(nullable: false),
-                        DimensionID = c.Int(nullable: false),
+                        Dimension = c.String(),
                         OtherInfo = c.String(),
                         CreatedBy = c.String(nullable: false, maxLength: 50),
                         ModifiedBy = c.String(nullable: false, maxLength: 50),
@@ -118,7 +119,6 @@ namespace HeatChart.Data.Sql.Migrations
                         Customer_ID = c.Int(),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Dimension", t => t.DimensionID)
                 .ForeignKey("dbo.Status", t => t.StatusID, cascadeDelete: true)
                 .ForeignKey("dbo.RawMaterialForm", t => t.RawMaterialFormID, cascadeDelete: true)
                 .ForeignKey("dbo.Specifications", t => t.SpecificationsID)
@@ -129,7 +129,6 @@ namespace HeatChart.Data.Sql.Migrations
                 .Index(t => t.ThirdPartyInspectionID)
                 .Index(t => t.RawMaterialFormID)
                 .Index(t => t.SpecificationsID)
-                .Index(t => t.DimensionID)
                 .Index(t => t.StatusID)
                 .Index(t => t.Customer_ID);
             
@@ -303,20 +302,19 @@ namespace HeatChart.Data.Sql.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.HeatChartMaterialHeaderRelationship",
+                "dbo.Dimension",
                 c => new
                     {
-                        ID = c.Int(nullable: false),
-                        MaterialRegisterHeaderID = c.Int(nullable: false),
-                        MaterialRegisterSubSeriesID = c.Int(nullable: false),
+                        ID = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 50),
+                        Description = c.String(),
+                        IsDeleted = c.Boolean(),
+                        CreatedBy = c.String(nullable: false, maxLength: 50),
+                        ModifiedBy = c.String(nullable: false, maxLength: 50),
+                        CreatedOn = c.DateTime(nullable: false),
+                        ModifiedOn = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.MaterialRegisterHeader", t => t.MaterialRegisterHeaderID)
-                .ForeignKey("dbo.MaterialRegisterSubSeries", t => t.MaterialRegisterSubSeriesID)
-                .ForeignKey("dbo.HeatChartDetails", t => t.ID)
-                .Index(t => t.ID)
-                .Index(t => t.MaterialRegisterHeaderID)
-                .Index(t => t.MaterialRegisterSubSeriesID);
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.Error",
@@ -379,8 +377,6 @@ namespace HeatChart.Data.Sql.Migrations
             DropForeignKey("dbo.HeatChartMaterialHeaderRelationship", "ID", "dbo.HeatChartDetails");
             DropForeignKey("dbo.HeatChartMaterialHeaderRelationship", "MaterialRegisterSubSeriesID", "dbo.MaterialRegisterSubSeries");
             DropForeignKey("dbo.HeatChartMaterialHeaderRelationship", "MaterialRegisterHeaderID", "dbo.MaterialRegisterHeader");
-            DropForeignKey("dbo.HeatChartDetails", "HeatChartHeaderID", "dbo.HeatChartHeader");
-            DropForeignKey("dbo.HeatChartDetails", "DimensionID", "dbo.Dimension");
             DropForeignKey("dbo.MaterialRegisterHeader", "ThirdPartyInspectionID", "dbo.ThirdPartyInspection");
             DropForeignKey("dbo.MaterialRegisterHeader", "SupplierID", "dbo.Supplier");
             DropForeignKey("dbo.HeatChartHeader", "Supplier_ID", "dbo.Supplier");
@@ -394,13 +390,10 @@ namespace HeatChart.Data.Sql.Migrations
             DropForeignKey("dbo.MaterialRegisterSubSeries", "MaterialRegisterHeaderID", "dbo.MaterialRegisterHeader");
             DropForeignKey("dbo.MaterialRegisterFileDetail", "MaterialRegisterSubSeriesID", "dbo.MaterialRegisterSubSeries");
             DropForeignKey("dbo.LabReport", "ID", "dbo.MaterialRegisterSubSeries");
-            DropForeignKey("dbo.MaterialRegisterHeader", "DimensionID", "dbo.Dimension");
+            DropForeignKey("dbo.HeatChartDetails", "HeatChartHeaderID", "dbo.HeatChartHeader");
             DropForeignKey("dbo.HeatChartHeader", "CustomerID", "dbo.Customer");
             DropIndex("dbo.UserRole", new[] { "RoleId" });
             DropIndex("dbo.UserRole", new[] { "UsersId" });
-            DropIndex("dbo.HeatChartMaterialHeaderRelationship", new[] { "MaterialRegisterSubSeriesID" });
-            DropIndex("dbo.HeatChartMaterialHeaderRelationship", new[] { "MaterialRegisterHeaderID" });
-            DropIndex("dbo.HeatChartMaterialHeaderRelationship", new[] { "ID" });
             DropIndex("dbo.MillDetail", new[] { "ID" });
             DropIndex("dbo.MaterialRegisterSubseriesTestRelationship", new[] { "MaterialRegisterSubSeriesID" });
             DropIndex("dbo.MaterialRegisterSubseriesTestRelationship", new[] { "TestID" });
@@ -410,12 +403,13 @@ namespace HeatChart.Data.Sql.Migrations
             DropIndex("dbo.MaterialRegisterSubSeries", new[] { "MaterialRegisterHeaderID" });
             DropIndex("dbo.MaterialRegisterHeader", new[] { "Customer_ID" });
             DropIndex("dbo.MaterialRegisterHeader", new[] { "StatusID" });
-            DropIndex("dbo.MaterialRegisterHeader", new[] { "DimensionID" });
             DropIndex("dbo.MaterialRegisterHeader", new[] { "SpecificationsID" });
             DropIndex("dbo.MaterialRegisterHeader", new[] { "RawMaterialFormID" });
             DropIndex("dbo.MaterialRegisterHeader", new[] { "ThirdPartyInspectionID" });
             DropIndex("dbo.MaterialRegisterHeader", new[] { "SupplierID" });
-            DropIndex("dbo.HeatChartDetails", new[] { "DimensionID" });
+            DropIndex("dbo.HeatChartMaterialHeaderRelationship", new[] { "MaterialRegisterSubSeriesID" });
+            DropIndex("dbo.HeatChartMaterialHeaderRelationship", new[] { "MaterialRegisterHeaderID" });
+            DropIndex("dbo.HeatChartMaterialHeaderRelationship", new[] { "ID" });
             DropIndex("dbo.HeatChartDetails", new[] { "SpecificationsID" });
             DropIndex("dbo.HeatChartDetails", new[] { "HeatChartHeaderID" });
             DropIndex("dbo.HeatChartHeader", new[] { "Supplier_ID" });
@@ -425,7 +419,7 @@ namespace HeatChart.Data.Sql.Migrations
             DropTable("dbo.UserRole");
             DropTable("dbo.Role");
             DropTable("dbo.Error");
-            DropTable("dbo.HeatChartMaterialHeaderRelationship");
+            DropTable("dbo.Dimension");
             DropTable("dbo.ThirdPartyInspection");
             DropTable("dbo.Supplier");
             DropTable("dbo.Specifications");
@@ -438,7 +432,7 @@ namespace HeatChart.Data.Sql.Migrations
             DropTable("dbo.LabReport");
             DropTable("dbo.MaterialRegisterSubSeries");
             DropTable("dbo.MaterialRegisterHeader");
-            DropTable("dbo.Dimension");
+            DropTable("dbo.HeatChartMaterialHeaderRelationship");
             DropTable("dbo.HeatChartDetails");
             DropTable("dbo.HeatChartHeader");
             DropTable("dbo.Customer");

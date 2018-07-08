@@ -12,7 +12,7 @@ namespace HeatChart.Web.Core.Report
         // Method to add single cell to the body  
         public static void AddCellToBody(PdfPTable tableLayout, string cellText, int colspan)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 7, 1, iTextSharp.text.BaseColor.DARK_GRAY)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 10, 1, iTextSharp.text.BaseColor.DARK_GRAY)))
             {
                 Colspan = colspan,
                 Padding = 7f,
@@ -24,7 +24,7 @@ namespace HeatChart.Web.Core.Report
 
         public static void AddCellToBodyRowSpan(PdfPTable tableLayout, string cellText, int colspan, int rowSpan)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 7, 1, iTextSharp.text.BaseColor.DARK_GRAY)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 10, 1, iTextSharp.text.BaseColor.DARK_GRAY)))
             {
                 Colspan = colspan,
                 Rowspan = rowSpan,
@@ -38,7 +38,7 @@ namespace HeatChart.Web.Core.Report
         // Method to add single cell to the body  
         public static void AddCellToBodyNoBorder(PdfPTable tableLayout, string cellText, int colspan)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 7, 1, iTextSharp.text.BaseColor.DARK_GRAY)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 10, 1, iTextSharp.text.BaseColor.DARK_GRAY)))
             {
                 Colspan = colspan,
                 Padding = 7f,
@@ -51,7 +51,8 @@ namespace HeatChart.Web.Core.Report
         // Method to add single cell to the body  
         public static void AddCellToBodyHeader(PdfPTable tableLayout, string cellText, int colspan)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 7, 1, iTextSharp.text.BaseColor.DARK_GRAY)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 10, 1, 
+                iTextSharp.text.BaseColor.DARK_GRAY)))
             {
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_LEFT,
@@ -62,7 +63,7 @@ namespace HeatChart.Web.Core.Report
 
         public static void AddCellToBodyHeaderNoBorder(PdfPTable tableLayout, string cellText, int colspan)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 7, 1, iTextSharp.text.BaseColor.DARK_GRAY)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 10, 1, iTextSharp.text.BaseColor.DARK_GRAY)))
             {
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_LEFT,
@@ -75,7 +76,7 @@ namespace HeatChart.Web.Core.Report
 
         public static void AddCellToDetailHeader(PdfPTable tableLayout, string cellText, int colspan)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 7, Font.BOLD, iTextSharp.text.BaseColor.BLACK)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD, iTextSharp.text.BaseColor.BLACK)))
             {
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_CENTER,
@@ -87,7 +88,7 @@ namespace HeatChart.Web.Core.Report
 
         public static void AddCellToDetailHeaderSmallPadding(PdfPTable tableLayout, string cellText, int colspan)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 7, Font.BOLD, iTextSharp.text.BaseColor.BLACK)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD, iTextSharp.text.BaseColor.BLACK)))
             {
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_CENTER,
@@ -159,7 +160,7 @@ namespace HeatChart.Web.Core.Report
 
         public static void AddCellToHeading(PdfPTable tableLayout, string cellText, int colspan)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 12, 1, iTextSharp.text.BaseColor.BLACK)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 14, 1, iTextSharp.text.BaseColor.BLACK)))
             {
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_CENTER,
@@ -170,7 +171,7 @@ namespace HeatChart.Web.Core.Report
 
         public static void AddCellToDetailHeading(PdfPTable tableLayout, string cellText, int colspan)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, iTextSharp.text.BaseColor.BLACK)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD, iTextSharp.text.BaseColor.BLACK)))
             {
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_CENTER,
@@ -181,7 +182,7 @@ namespace HeatChart.Web.Core.Report
 
         public static void AddCellToDetailHeadingSheet(PdfPTable tableLayout, string cellText, int colspan)
         {
-            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 8, Font.BOLD, iTextSharp.text.BaseColor.BLACK)))
+            tableLayout.AddCell(new PdfPCell(new Phrase(cellText, new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD, iTextSharp.text.BaseColor.BLACK)))
             {
                 Colspan = colspan,
                 HorizontalAlignment = Element.ALIGN_CENTER,
@@ -190,27 +191,30 @@ namespace HeatChart.Web.Core.Report
             });
         }
 
-        public static void AddImageIntoCell(PdfPTable tableLayout, iTextSharp.text.Image image, int colspan)
+        public static void AddHeaderImageIntoCell(PdfPTable tableLayout, iTextSharp.text.Image image, int colspan)
         {
-            PdfPTable headerImageTable = new PdfPTable(12);
-            headerImageTable.HorizontalAlignment = Element.ALIGN_CENTER;
-
             tableLayout.AddCell(new PdfPCell(image)
             {
                 Colspan = colspan,
-                HorizontalAlignment = Element.ALIGN_CENTER,
-                VerticalAlignment = Element.ALIGN_TOP, 
+                HorizontalAlignment = Element.ALIGN_RIGHT,
+                VerticalAlignment = Element.ALIGN_TOP,
                 PaddingBottom  = 5,
-                PaddingTop = 5           
+                PaddingTop = 5,
+                PaddingRight = 5
             });
+        }
 
-            tableLayout.AddCell(new PdfPCell(headerImageTable)
+        public static void AddFooterImageIntoCell(PdfPTable tableLayout, iTextSharp.text.Image image, int colspan)
+        {
+            tableLayout.AddCell(new PdfPCell(image)
             {
                 Colspan = colspan,
-                HorizontalAlignment = Element.ALIGN_TOP,
+                HorizontalAlignment = Element.ALIGN_LEFT,
                 VerticalAlignment = Element.ALIGN_TOP,
+                PaddingBottom = 5,
+                PaddingTop = 5,
+                PaddingLeft = 5
             });
-
         }
     }
 }

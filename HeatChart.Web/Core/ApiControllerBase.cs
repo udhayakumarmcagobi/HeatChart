@@ -37,13 +37,13 @@ namespace HeatChart.Web.Core
             {
                 if (ConfigHelper.LogProviderRequests) ObjHelper.LogProviderRequest(ex, "ApiControllerBase");
                 LogError(ex);
-                response = request.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
+                response = request.CreateResponse(HttpStatusCode.BadRequest, ConfigurationReader.ErrorMessage);
             }
             catch (Exception ex)
             {
                 if (ConfigHelper.LogProviderRequests) ObjHelper.LogProviderRequest(ex, "ApiControllerBase");
                 LogError(ex);
-                response = request.CreateResponse(HttpStatusCode.InternalServerError, ex.InnerException?.Message);
+                response = request.CreateResponse(HttpStatusCode.InternalServerError, ConfigurationReader.ErrorMessage);
                 //throw;
             }
             return response;

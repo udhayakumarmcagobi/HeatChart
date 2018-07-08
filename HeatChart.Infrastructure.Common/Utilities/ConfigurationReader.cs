@@ -82,6 +82,13 @@ namespace HeatChart.Infrastructure.Common.Utilities
             }
         }
 
+        public static string ErrorMessage
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["ErrorMessage"]);
+            }
+        }
         #endregion
 
         #region AWS Configs
@@ -125,6 +132,14 @@ namespace HeatChart.Infrastructure.Common.Utilities
             get
             {
                 return (WebConfigurationManager.AppSettings["CompanyImageName"]);
+            }
+        }
+
+        public static string CompanyAddressImageName
+        {
+            get
+            {
+                return (WebConfigurationManager.AppSettings["CompanyAddressImageName"]);
             }
         }
 

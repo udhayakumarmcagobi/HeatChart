@@ -42,7 +42,7 @@ namespace HeatChart.Web.Controllers
             {
                 HttpResponseMessage response = null;
 
-                var heatChartHeaders = _heatChartHeadersRepository.GetAll().Where(x => !x.IsDeleted)
+                var heatChartHeaders = _heatChartHeadersRepository.GetAll()
                                                .OrderByDescending(x => x.ModifiedOn)
                                                .Take(2).ToList();
 
@@ -74,23 +74,23 @@ namespace HeatChart.Web.Controllers
                 {
                     filter = filter.Trim().ToLower();
 
-                    heatChartHeaders = _heatChartHeadersRepository.FindBy(mr => mr.HeatChartNumber.ToLower().Contains(filter) && mr.IsDeleted == false)
+                    heatChartHeaders = _heatChartHeadersRepository.FindBy(mr => mr.HeatChartNumber.ToLower().Contains(filter))
                         .OrderByDescending(mr => mr.ModifiedOn)
                         .Skip(currentPage * currentPageSize)
                         .Take(currentPageSize)
                         .ToList();
 
-                    totalHeatCharts = _heatChartHeadersRepository.FindBy(c => c.IsDeleted == false && c.HeatChartNumber.ToLower().Contains(filter)).Count();
+                    totalHeatCharts = _heatChartHeadersRepository.FindBy(c => c.HeatChartNumber.ToLower().Contains(filter)).Count();
                 }
                 else
                 {
-                    heatChartHeaders = _heatChartHeadersRepository.GetAll().Where(mr => mr.IsDeleted == false)
+                    heatChartHeaders = _heatChartHeadersRepository.GetAll()
                                .OrderByDescending(mr => mr.ModifiedOn)
                                 .Skip(currentPage * currentPageSize)
                                 .Take(currentPageSize)
                             .ToList();
 
-                    totalHeatCharts = _heatChartHeadersRepository.FindBy(x => x.IsDeleted == false).Count();
+                    totalHeatCharts = _heatChartHeadersRepository.GetAll().Count();
                 }
 
                 var heatChartHeaderVM = DomainToViewModelCustomMapper.MapHeatChartHeaders(heatChartHeaders);
@@ -320,7 +320,8 @@ namespace HeatChart.Web.Controllers
         {
             if (heatChartHeader.HeatChartDetails == null || !heatChartHeader.HeatChartDetails.Any()) return;
 
-            var deletableHeatChartDetails = heatChartHeader.HeatChartDetails.Where(sub => !heatChartHeaderVM.HeatChartDetails.Any(x => x.ID == sub.ID)).ToList();
+            var deletableHeatChartDetails = heatChartHeader.HeatChartDetails.
+                                            Where(sub => !heatChartHeaderVM.HeatChartDetails.Any(x => x.ID.Equals(sub.ID))).ToList();
 
             foreach (var heatChartDetail in deletableHeatChartDetails)
             {
@@ -339,7 +340,7 @@ namespace HeatChart.Web.Controllers
 
             foreach (var heatChartDetail in heatChartHeaderVM.HeatChartDetails)
             {
-                var existingHeatChartDetail = heatChartHeader.HeatChartDetails.Where(x => x.ID == heatChartDetail.ID).SingleOrDefault();
+                var existingHeatChartDetail = heatChartHeader.HeatChartDetails.Where(x => x.ID == heatChartDetail.ID && x.ID > 0).SingleOrDefault();
 
                 if (existingHeatChartDetail != null)
                 {

@@ -76,8 +76,13 @@
 
         function UpdateHeatChartHeaderSucceded(response) {
             var heatChartHeaderRegistered = response.data;
-            notificationService.displaySuccess($scope.EditedHeatChartHeader.HeatChartNumber + ' has been successfully updated')
-            $location.url("/heatcharts/edit/" + heatChartHeaderRegistered.ID);
+            notificationService.displaySuccess($scope.EditedHeatChartHeader.HeatChartNumber + ' has been successfully updated');
+
+            apiService.get('/api/heatCharts/edit', config,
+              LoadHeatChartHeaderSucceded,
+              LoadHeatChartHeaderFailed);
+
+            //$location.url("/heatcharts/edit/" + heatChartHeaderRegistered.ID);
         }
         function UpdateHeatChartHeaderFailed(response) {
             notificationService.displayError(response.data);

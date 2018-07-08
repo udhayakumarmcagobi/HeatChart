@@ -1,17 +1,10 @@
-﻿using HeatChart.Entities.Sql;
-using HeatChart.Infrastructure.Common.Utilities;
-using HeatChart.ViewModels.DatasetVM;
-using HeatChart.Web.Core.AWS;
+﻿using HeatChart.ViewModels.DatasetVM;
 using Microsoft.Reporting.WebForms;
-using ModelMapper.DomainToViewModel;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace HeatChart.Web.Core.Report
 {

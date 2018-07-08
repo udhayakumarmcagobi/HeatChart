@@ -22,12 +22,6 @@ namespace HeatChart.Web.Core.Report
 
             headerTable.HorizontalAlignment = Element.ALIGN_CENTER;
 
-            GetHeatChartHeadingPDFTable(headerTable);
-
-            GetHeatChartHeader(headerTable, _heatChartHeaderVM);
-
-            GetHeatChartDetailHeadingPDFTable(headerTable);
-
 
             headerTable.WriteSelectedRows(0, -1, 20, 30, writer.DirectContent);
 
@@ -39,7 +33,7 @@ namespace HeatChart.Web.Core.Report
 
             iTextSharp.text.Image headerImage = iTextSharp.text.Image.GetInstance(headerImagePath);
 
-            PDFGenerateUtilityHelper.AddImageIntoCell(tableLayout, headerImage, 12);
+            PDFGenerateUtilityHelper.AddHeaderImageIntoCell(tableLayout, headerImage, 12);
         }
 
         private static void GetHeatChartDetailHeadingPDFTable(PdfPTable tableLayout)
