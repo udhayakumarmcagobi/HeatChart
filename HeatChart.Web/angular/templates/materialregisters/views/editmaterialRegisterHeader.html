@@ -280,8 +280,8 @@
             <div class="row margin-top-one">
                 <div class="col-sm-12 text-center">
                     <input type="submit" name="submit" value="Update" class="btn btn-info">
-                    <input type="button" name="DownloadAllReports" value="Download All Reports"  ng-show="EditedMaterialRegisterHeader.MaterialRegisterSubSeriess.length > 0"
-                           class="btn btn-info" ng-click="DownloadAllReports(EditedMaterialRegisterHeader)">
+                    <input type="button" name="DownloadAllReports" value="Download All Reports" 
+                           class="btn btn-info" ng-show="EditedMaterialRegisterHeader.IsShowDownLoad == true" ng-click="DownloadAllReports(EditedMaterialRegisterHeader)">
                 </div>
             </div>
         </div>

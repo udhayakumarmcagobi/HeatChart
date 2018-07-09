@@ -34,12 +34,15 @@ namespace ModelMapper.DomainToViewModel
 
             materialRegisterHeaderVM.MaterialRegisterSubSeriess = MapMaterialRegisterSubSeriesList(materialRegisterHeader.MaterialRegisterSubSeriess.ToList());
 
+
             materialRegisterHeaderVM.SupplierSelected = AutoMapper.Map<Supplier, SupplierVM>(materialRegisterHeader.Suppliers);
             materialRegisterHeaderVM.ThirdPartyInspectionSelected = AutoMapper.Map<ThirdPartyInspection, ThirdPartyInspectionVM>(materialRegisterHeader.ThirdPartyInspections);
             materialRegisterHeaderVM.SpecificationSelected = AutoMapper.Map<Specifications, SpecificationsVM>(materialRegisterHeader.Specification);
             materialRegisterHeaderVM.Dimension = materialRegisterHeader.Dimension;
             materialRegisterHeaderVM.RawMaterialFormSelected = AutoMapper.Map<RawMaterialForm, RawMaterialFormVM>(materialRegisterHeader.RawMaterialForms);
 
+            materialRegisterHeaderVM.IsShowDownLoad = materialRegisterHeader.MaterialRegisterSubSeriess != null && 
+                materialRegisterHeader.MaterialRegisterSubSeriess.Any(x => x.MaterialRegisterFileDetails.Any()) ? true:false;
             return materialRegisterHeaderVM;
         }
 
@@ -89,7 +92,11 @@ namespace ModelMapper.DomainToViewModel
             heatChartHeaderVM.HeatChartDetails = MapHeatChartDetailsList(heatChartHeader.HeatChartDetails.ToList());
 
             heatChartHeaderVM.CustomerSelected = AutoMapper.Map<Customer, CustomerVM>(heatChartHeader.Customers);            
-            heatChartHeaderVM.ThirdPartyInspectionSelected = AutoMapper.Map<ThirdPartyInspection, ThirdPartyInspectionVM>(heatChartHeader.ThirdPartyInspections);            
+            heatChartHeaderVM.ThirdPartyInspectionSelected = AutoMapper.Map<ThirdPartyInspection, ThirdPartyInspectionVM>(heatChartHeader.ThirdPartyInspections);
+
+            heatChartHeaderVM.IsShowDownLoad = heatChartHeaderVM.HeatChartDetails != null &&
+                heatChartHeaderVM.HeatChartDetails.Any(x => x.MaterialRegisterSubSeriesSelected != null &&
+                x.MaterialRegisterSubSeriesSelected.MaterialRegisterFileDetails.Any()) ? true : false;
 
             return heatChartHeaderVM;
         }

@@ -52,7 +52,7 @@
                                 <buton class="btn btn-primary btn-xs" ng-click="GenerateHeatChart(heatChart);">
                                     Generate Heat Chart                                   
                                 </buton>
-                                <buton class="btn btn-primary btn-xs" ng-click="DownloadAllReports(heatChart);">
+                                <buton class="btn btn-primary btn-xs" ng-show="heatChart.IsShowDownLoad == true" ng-click="DownloadAllReports(heatChart);">
                                     Download All Reports
                                     <i class="fa fa-download pull-right"></i>
                                 </buton>

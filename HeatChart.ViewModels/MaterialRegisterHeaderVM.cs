@@ -29,6 +29,7 @@ namespace HeatHeatChart.ViewModels
         public List<SpecificationsVM> Specifications { get; set; } // Specifications
         public DimensionVM DimensionSelected { get; set; } // Selected Dimension
         public List<DimensionVM> Dimensions { get; set; } // Dimensions
+        public bool IsShowDownLoad { get; set; } = false;
 
         public string Dimension { get; set; }
 

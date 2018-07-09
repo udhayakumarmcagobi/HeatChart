@@ -39,6 +39,7 @@ namespace HeatHeatChart.ViewModels
         public bool IsDeleted { get; set; } // For soft delete indication
         public bool IsHeatChartNumberAutoCalculate { get; set; } // It is used to identify the Heat Chart number to be auto calculated or not
 
+        public bool IsShowDownLoad = false;
         public IList<HeatChartDetailsVM> HeatChartDetails { get; set; } // Material register details
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

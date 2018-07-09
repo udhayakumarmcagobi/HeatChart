@@ -96,6 +96,8 @@ namespace HeatChart.Web.Controllers
 
                 var heatChartHeaderVM = DomainToViewModelCustomMapper.MapHeatChartHeaders(heatChartHeaders);
 
+                
+
                 PaginationSet<HeatChartHeaderVM> pagedSet = new PaginationSet<HeatChartHeaderVM>()
                 {
                     Page = currentPage,
@@ -305,6 +307,8 @@ namespace HeatChart.Web.Controllers
                 HttpResponseMessage response = null;
 
                 var heatChartSubseries = GetHeatChartDetailsVM();
+
+                
 
                 response = request.CreateResponse(HttpStatusCode.OK, heatChartSubseries);
 
