@@ -298,18 +298,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="text-center" ng-repeat="heatChartDetail in EditedHeatChartHeader.HeatChartDetails">
-
-                                            <td>{{heatChartDetail.MaterialRegisterHeaderSelected.CTNumber}}</td>
-                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.SubSeriesNumber}}</td>
-                                            <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.MaterialRegisterFileDetails[0].FileName}}</td>
-                                            <td>
-                                                <buton class="btn btn-primary btn-xs" 
-                                                       ng-show="heatChartDetail.MaterialRegisterSubSeriesSelected.MaterialRegisterFileDetails.length > 0" ng-click="DownloadAll(heatChartDetail.MaterialRegisterSubSeriesSelected);">
-                                                    Download
-                                                    <i class="fa fa-download pull-right"></i>
-                                                </buton>
-                                            </td>
+                                        <tr class="text-center" ng-repeat="heatChartDetail in EditedHeatChartHeader.HeatChartDetails" 
+                                            ng-if="heatChartDetail.MaterialRegisterSubSeriesSelected.MaterialRegisterFileDetails.length > 0">
+                                           
+                                                <td>{{heatChartDetail.MaterialRegisterHeaderSelected.CTNumber}}</td>
+                                                <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.SubSeriesNumber}}</td>
+                                                <td>{{heatChartDetail.MaterialRegisterSubSeriesSelected.MaterialRegisterFileDetails[0].FileName}}</td>
+                                                <td>
+                                                    <buton class="btn btn-primary btn-xs"
+                                                           ng-show="heatChartDetail.MaterialRegisterSubSeriesSelected.MaterialRegisterFileDetails.length > 0" ng-click="DownloadAll(heatChartDetail.MaterialRegisterSubSeriesSelected);">
+                                                        Download
+                                                        <i class="fa fa-download pull-right"></i>
+                                                    </buton>
+                                                </td>
                                         </tr>
                                     </tbody>
 

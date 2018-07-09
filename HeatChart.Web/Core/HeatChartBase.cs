@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.Caching;
 using System.Web;
 
 namespace HeatChart.Web.Core
@@ -37,6 +38,8 @@ namespace HeatChart.Web.Core
         private List<HeatChartHeader> _heatChartHeaders = null;
 
         protected HttpRequestMessage currentRequestMessage { get; set; }
+
+        private static MemoryCache _cache = MemoryCache.Default;
 
         #endregion
 
@@ -152,8 +155,19 @@ namespace HeatChart.Web.Core
             {
                 if (_materialRegisterHeaders == null)
                 {
-                    _materialRegisterHeadersRepository = GetCurrentDataRepository<MaterialRegisterHeader>(currentRequestMessage);
-                    _materialRegisterHeaders = _materialRegisterHeadersRepository.GetAll().OrderByDescending(x => x.ModifiedOn).ToList();
+                    if (!_cache.Contains("MaterialRegisterHeaders"))
+                    {
+                        _materialRegisterHeaders = RefreshMaterialRegisterHeader();
+                        CacheItemPolicy cacheItemPolicy = new CacheItemPolicy();
+
+                        cacheItemPolicy.AbsoluteExpiration = DateTime.Now.AddDays(30);
+
+                        _cache.Add("MaterialRegisterHeaders", _materialRegisterHeaders, cacheItemPolicy);
+                    }
+                    else
+                    {
+                        _materialRegisterHeaders = _cache.Get("MaterialRegisterHeaders") as List<MaterialRegisterHeader>;
+                    }
                 }
                 return _materialRegisterHeaders;
             }
@@ -165,8 +179,19 @@ namespace HeatChart.Web.Core
             {
                 if (_materialRegisterSubSeries== null)
                 {
-                    _materialRegisterSubseriessRepository = GetCurrentDataRepository<MaterialRegisterSubSeries>(currentRequestMessage);
-                    _materialRegisterSubSeries = _materialRegisterSubseriessRepository.GetAll().ToList();
+                    if (!_cache.Contains("MaterialRegisterSubSeries"))
+                    {
+                        _materialRegisterSubSeries = RefreshMaterialRegisterSubSeries();
+                        CacheItemPolicy cacheItemPolicy = new CacheItemPolicy();
+
+                        cacheItemPolicy.AbsoluteExpiration = DateTime.Now.AddDays(30);
+
+                        _cache.Add("MaterialRegisterSubSeries", _materialRegisterSubSeries, cacheItemPolicy);
+                    }
+                    else
+                    {
+                        _materialRegisterSubSeries = _cache.Get("MaterialRegisterSubSeries") as List<MaterialRegisterSubSeries>;
+                    }
                 }
                 return _materialRegisterSubSeries;
             }
@@ -177,11 +202,32 @@ namespace HeatChart.Web.Core
             {
                 if (_heatChartHeaders == null)
                 {
+
                     _heatChartHeadersRepository = GetCurrentDataRepository<HeatChartHeader>(currentRequestMessage);
                     _heatChartHeaders = _heatChartHeadersRepository.GetAll().OrderByDescending(x => x.ModifiedOn).ToList();
                 }
                 return _heatChartHeaders;
             }
+        }
+
+        #endregion
+
+        #region Referesh Cache
+
+        private List<MaterialRegisterHeader> RefreshMaterialRegisterHeader()
+        {
+            _materialRegisterHeadersRepository = GetCurrentDataRepository<MaterialRegisterHeader>(currentRequestMessage);
+            _materialRegisterHeaders = _materialRegisterHeadersRepository.GetAll().OrderByDescending(x => x.ModifiedOn).ToList();
+
+            return _materialRegisterHeaders;
+        }
+
+        private List<MaterialRegisterSubSeries> RefreshMaterialRegisterSubSeries()
+        {
+            _materialRegisterSubseriessRepository = GetCurrentDataRepository<MaterialRegisterSubSeries>(currentRequestMessage);
+            _materialRegisterSubSeries = _materialRegisterSubseriessRepository.GetAll().ToList();
+
+            return _materialRegisterSubSeries;
         }
 
         #endregion

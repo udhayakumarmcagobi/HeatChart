@@ -83,8 +83,10 @@
             }
             else
             {
-                $scope.heatChartDetails.push($scope.newHeatChartDetails);
-                $scope.newHeatChartDetails = [];
+                if ($scope.newHeatChartDetails.MaterialRegisterHeaderSelected.CTNumber != "") {
+                    $scope.heatChartDetails.push($scope.newHeatChartDetails);
+                    $scope.newHeatChartDetails = [];
+                }
             }
 
             if ($scope.newHeatChartHeader != undefined) {

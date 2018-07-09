@@ -16,6 +16,7 @@ using HeatChart.Entities.Sql;
 using HeatHeatChart.ViewModels;
 using ModelMapper.DomainToViewModel;
 using HeatChart.Infrastructure.Common.Utilities;
+using System.Runtime.Caching;
 
 namespace HeatChart.Web.Controllers
 {

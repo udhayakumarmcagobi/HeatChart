@@ -3,7 +3,7 @@ using HeatChart.Entities.Sql.Domain;
 using HeatChart.Web.Core;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Web.Http;
+using System.Web.Http;  
 using System.Linq;
 using HeatHeatChart.ViewModels.Domain;
 using HeatChart.DataRepository.Sql.Extensions;
@@ -17,6 +17,7 @@ using HeatHeatChart.ViewModels;
 using ModelMapper.DomainToViewModel;
 using HeatChart.Infrastructure.Common.Utilities;
 using System.Diagnostics;
+using System.Runtime.Caching;
 
 namespace HeatChart.Web.Controllers
 {
@@ -27,7 +28,7 @@ namespace HeatChart.Web.Controllers
         #region Constructors
         public MaterialRegistersController(IDataRepositoryFactory dataRepositoryFactory)
             : base(dataRepositoryFactory)
-        {           
+        {
         }
 
         #endregion
@@ -138,6 +139,10 @@ namespace HeatChart.Web.Controllers
         [Route("create")]
         public HttpResponseMessage Create(HttpRequestMessage request, MaterialRegisterHeaderVM materialRegisterHeaderVM)
         {
+            MemoryCache _cache = MemoryCache.Default;
+            _cache.Remove("MaterialRegisterHeaders");
+            _cache.Remove("MaterialRegisterSubSeries");
+
             _requiredRepositories = new List<Type>() { typeof(MaterialRegisterHeader), typeof(Error) };
 
             return CreateHttpResponse(request, _requiredRepositories, () =>
@@ -180,7 +185,7 @@ namespace HeatChart.Web.Controllers
             _requiredRepositories = new List<Type>()
             {
                 typeof(MaterialRegisterHeader),
-                typeof(Error)                
+                typeof(Error)
             };
 
             currentRequestMessage = request;
@@ -190,7 +195,7 @@ namespace HeatChart.Web.Controllers
                 HttpResponseMessage response = null;
 
                 var materialRegisterHeader = _materialRegisterHeadersRepository.GetSingleByMaterialRegisterHeaderID(ID);
-                                               
+
                 var materialRegisterHeaderVM = DomainToViewModelCustomMapper.MapMaterialRegisterHeader(materialRegisterHeader);
 
                 GetMaterialRegisterHeaderVM(materialRegisterHeaderVM);
@@ -205,6 +210,10 @@ namespace HeatChart.Web.Controllers
         [Route("update")]
         public HttpResponseMessage Update(HttpRequestMessage request, MaterialRegisterHeaderVM materialRegisterHeaderVM)
         {
+            MemoryCache _cache = MemoryCache.Default;
+            _cache.Remove("MaterialRegisterHeaders");
+            _cache.Remove("MaterialRegisterSubSeries");
+
             _requiredRepositories = new List<Type>()
             {
                 typeof(MaterialRegisterHeader),
@@ -236,7 +245,7 @@ namespace HeatChart.Web.Controllers
                     }
                     else
                     {
-                        
+
                         _materialRegisterHeader.UpdateMaterialRegisterHeader(materialRegisterHeaderVM);
 
                         UpdateSubSeriesListRemoveSubSeries(_materialRegisterHeader, materialRegisterHeaderVM);
@@ -259,6 +268,9 @@ namespace HeatChart.Web.Controllers
         [Route("delete")]
         public HttpResponseMessage Delete(HttpRequestMessage request, MaterialRegisterHeaderVM materialRegisterHeaderVM)
         {
+            MemoryCache _cache = MemoryCache.Default;
+            _cache.Remove("MaterialRegisterHeaders");
+
             _requiredRepositories = new List<Type>() { typeof(MaterialRegisterHeader), typeof(Error), typeof(MaterialRegisterSubSeries) };
 
             return CreateHttpResponse(request, _requiredRepositories, () =>
@@ -328,7 +340,7 @@ namespace HeatChart.Web.Controllers
 
                 var materialRegisterSubSeries = _materialRegisterSubseriessRepository.GetAll().Where(x => x.MaterialRegisterHeaderID == materialHeaderID)
                                                .OrderBy(x => x.SubSeriesNumber);
-                                             
+
 
                 var materialRegisterSubSeriesVMs = DomainToViewModelCustomMapper.MapMaterialRegisterSubSeriesList(materialRegisterSubSeries.ToList());
 
@@ -361,7 +373,7 @@ namespace HeatChart.Web.Controllers
                     _labReportssRepository.Delete(materialSub.LabReport);
                 }
                 _materialRegisterSubseriessRepository.Delete(materialSub);
-               
+
             }
         }
 
@@ -370,10 +382,10 @@ namespace HeatChart.Web.Controllers
             if (materialRegisterHeaderVM.MaterialRegisterSubSeriess == null || !materialRegisterHeaderVM.MaterialRegisterSubSeriess.Any()) return;
 
             foreach (var materialSub in materialRegisterHeaderVM.MaterialRegisterSubSeriess)
-            {                
+            {
                 var existingSubSeries = materialRegisterHeader.MaterialRegisterSubSeriess.Where(x => x.ID == materialSub.ID).SingleOrDefault();
 
-                if(existingSubSeries != null)
+                if (existingSubSeries != null)
                 {
                     existingSubSeries.UpdateMaterialRegisterSubSeries(materialSub);
 
@@ -401,13 +413,13 @@ namespace HeatChart.Web.Controllers
         #region Mill and Lab
         private void UpdateMillDetailsAddUpdate(MaterialRegisterSubSeries materialRegisterSubSeries, MaterialRegisterSubSeriesVM materialRegisterSubSeriesVM)
         {
-            if (materialRegisterSubSeriesVM.MillDetail == null || string.IsNullOrEmpty(materialRegisterSubSeriesVM.MillDetail.TCNumber) )
+            if (materialRegisterSubSeriesVM.MillDetail == null || string.IsNullOrEmpty(materialRegisterSubSeriesVM.MillDetail.TCNumber))
             {
                 if (materialRegisterSubSeries.MillDetail == null) return;
-                               
+
                 _millDetailsRepository.Delete(materialRegisterSubSeries.MillDetail);
                 return;
-              
+
             }
 
             var millDetail = materialRegisterSubSeries.MillDetail;
@@ -422,7 +434,7 @@ namespace HeatChart.Web.Controllers
                 millDetail = AutoMapper.Map<MillDetailVM, MillDetail>(materialRegisterSubSeriesVM.MillDetail);
                 millDetail.ID = materialRegisterSubSeriesVM.ID;
                 _millDetailsRepository.Insert(millDetail);
-            }           
+            }
         }
 
         private void UpdateLabReportsAddUpdate(MaterialRegisterSubSeries materialRegisterSubSeries, MaterialRegisterSubSeriesVM materialRegisterSubSeriesVM)
@@ -432,7 +444,7 @@ namespace HeatChart.Web.Controllers
                 if (materialRegisterSubSeries.LabReport == null) return;
 
                 _labReportssRepository.Delete(materialRegisterSubSeries.LabReport);
-                return;              
+                return;
             }
 
             var labReport = materialRegisterSubSeries.LabReport;
@@ -459,12 +471,12 @@ namespace HeatChart.Web.Controllers
         {
             if (materialRegisterSubSeries.MaterialRegisterSubSeriesTestRelationships == null || !materialRegisterSubSeries.MaterialRegisterSubSeriesTestRelationships.Any()) return;
 
-            var deletableMaterialSubSeriesTestRelationsips = 
+            var deletableMaterialSubSeriesTestRelationsips =
                 materialRegisterSubSeries.MaterialRegisterSubSeriesTestRelationships.Where(rel => !materialRegisterSubSeriesVM.SelectedTests.Any(x => x.ID == rel.TestID)).ToList();
 
             foreach (var testRelation in deletableMaterialSubSeriesTestRelationsips)
             {
-                _materialRegisterSubseriesTestRelationshipRepository .Delete(testRelation);
+                _materialRegisterSubseriesTestRelationshipRepository.Delete(testRelation);
             }
         }
 
@@ -517,7 +529,7 @@ namespace HeatChart.Web.Controllers
 
             foreach (var fileDetail in materialRegisterSubSeriesVM.MaterialRegisterFileDetails)
             {
-                var existingMaterialFileDetail= materialRegisterSubSeries.MaterialRegisterFileDetails.Where(x => x.ID == fileDetail.ID).SingleOrDefault();
+                var existingMaterialFileDetail = materialRegisterSubSeries.MaterialRegisterFileDetails.Where(x => x.ID == fileDetail.ID).SingleOrDefault();
 
                 if (existingMaterialFileDetail != null)
                 {
@@ -552,13 +564,13 @@ namespace HeatChart.Web.Controllers
         private MaterialRegisterSubSeriesVM GetMaterialRegisterSubSeriesVM()
         {
             return new MaterialRegisterSubSeriesVM()
-            {               
-                Tests = TestList                
+            {
+                Tests = TestList
             };
         }
 
         private string AutoCalculateCTNumber()
-        {           
+        {
             List<String> CTNumberList = MaterialRegisterHeaders.Select(x => x.CTNumber).ToList();
 
             return BusinessUtilties.AutoCalculateCTNumber(CTNumberList);
